@@ -3,17 +3,17 @@ require 'nokogiri'
 require 'pry'
 require 'rubygems'
 
-
-# doc = Nokogiri::HTML(open("http://scores.nbcsports.com/fb/pbp.asp?gamecode=20161113020&home=20&vis=14"))
-
-doc = Nokogiri::HTML(open("http://scores.nbcsports.com/fb/scoreboard.asp"))
-
-a = doc.css('a')
-array = []
-a.each do |thing|
-  if thing.text == "Box"
-    array << thing
+game_week = 1
+while game_week <= 10
+  doc = Nokogiri::HTML(open("http://scores.nbcsports.com/fb/scoreboard.asp?week=#{game_week}"))
+  a = doc.css('a')
+  array = []
+  a.each do |thing|
+    if thing.text == "Box"
+      array << thing
+    end
   end
+  game_week += 1
 end
 
 gamecodes = []
@@ -42,4 +42,3 @@ gamecodes.each do |gamecode|
   end
   stat[gamecode] = gamestatarray
 end
-binding.pry
