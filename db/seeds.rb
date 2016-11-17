@@ -15,13 +15,15 @@ data_object.each do |stat|
     !stat_array.include?("kicks"))
 
     current_player = Player.find_or_create_by(first_name:stat_array[1], last_name: stat_array[2])
-    new_stat = {play_type: nil, yards: nil, direction: nil, complete: nil}
+    new_stat = {play_type: nil, yards: nil, direction: nil, complete: nil, player: current_player.full_name}
 
     if stat_array.include?("rush")
       new_stat[:play_type] = "rush"
       stat_array.each do |n|
         if n.to_i != 0
           new_stat[:yards] = n
+        elsif n == "left" || n == "middle" || n == "right"
+          new_stat[:direction] = n
         end
       end
     elsif stat_array.include?("pass")
@@ -32,6 +34,8 @@ data_object.each do |stat|
         elsif n.to_i != 0
           new_stat[:complete] = true
           new_stat[:yards] = n
+        elsif n == "left" || n == "middle" || n == "right"
+          new_stat[:direction] = n
         end
       end
     end
