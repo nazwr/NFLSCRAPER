@@ -8,6 +8,14 @@ class Player < ActiveRecord::Base
     first_name + " " + last_name
   end
 
+  def total_yards
+    total = 0
+    stats.each do |stat|
+      total += stat.yards.to_i
+    end
+    total
+  end
+
   def total_pass_yards
     total = 0
     stats.each do |stat|
@@ -42,6 +50,16 @@ class Player < ActiveRecord::Base
     total = 0
     stats.each do |stat|
       if stat.play_type == "pass"
+        total += 1
+      end
+    end
+    total
+  end
+
+  def receptions
+    total = 0
+    stats.each do |stat|
+      if stat.play_type = "rec"
         total += 1
       end
     end
