@@ -1,6 +1,5 @@
 game_data = File.read("./public/2016/WEEK1/20160908007.json")
 data_object = JSON.parse(game_data)
-skip_plays = ["Penalty:", "field", "sacked", "kicks"]
 
 data_object.each do |stat|
   stat_array = stat.split(" ")
@@ -15,10 +14,27 @@ data_object.each do |stat|
     !stat_array.include?("extra") &&
     !stat_array.include?("kicks"))
 
-      if Player.find_by(last_name: stat_array[2], first_name:stat_array[1]) != nil
-        current_player = Player.find_by(first_name:stat_array[1], last_name: stat_array[2])
-      else
-        current_player = Player.create(first_name:stat_array[1], last_name: stat_array[2])
+    current_player = Player.find_or_create_by(first_name:stat_array[1], last_name: stat_array[2])
+    new_stat = {play_type: nil, yards: nil, direction: nil, complete: nil}
+
+    if stat_array.include?("rush")
+      new_stat[:play_type] = "rush"
+      stat_array.each do |n|
+        if n.to_i != 0
+          new_stat[:yards] = n
+        end
       end
+    elsif stat_array.include?("pass")
+      new_stat[:play_type] = "pass"
+      stat_array.each do |n|
+        if n == "incomplete"
+          new_stat[:complete] = false
+        elsif n.to_i != 0
+          new_stat[:complete] = true
+          new_stat[:yards] = n
+        end
+      end
+    end
+    binding.pry
   end
 end
