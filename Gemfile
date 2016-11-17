@@ -11,6 +11,7 @@ gem 'listen'
 gem 'omniauth-facebook'
 gem 'dotenv-rails'
 gem 'redis'
+gem 'foundation-rails'
 
 group :development, :test do
   gem 'capybara'
