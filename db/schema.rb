@@ -24,9 +24,9 @@ ActiveRecord::Schema.define(version: 20161117204508) do
 
   create_table "stats", force: :cascade do |t|
     t.string   "play_type",  null: false
-    t.string   "yards",      null: false
-    t.string   "direction",  null: false
-    t.boolean  "complete",   null: false
+    t.string   "yards"
+    t.string   "direction"
+    t.boolean  "complete"
     t.integer  "player_id",  null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
