@@ -15,3 +15,7 @@
  *= require foundation_and_overrides
 
  */
+
+div.row {
+  margin-left: 30px;
+}

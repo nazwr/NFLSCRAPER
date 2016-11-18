@@ -7,6 +7,7 @@ class App extends Component {
       currentPlayerName: "",
       playerSearchLastName: "",
       playerSearchFirstName: "",
+      playerSearchStat: [],
     };
     this.handleFieldFirstName = this.handleFieldFirstName.bind(this);
     this.handleFieldLastName = this.handleFieldLastName.bind(this);
@@ -36,12 +37,25 @@ class App extends Component {
         }
       },
       success: (data) => {
-        
+        this.setState({
+          playerSearchStat: data.player,
+        })
       }
     })
   }
 
   render() {
+    if (this.state.playerSearchStat.length !== 0) {
+      var stats = "";
+      stats = this.state.playerSearchStat.map(stat => {
+        return(
+          <div className="row" key={stat.id}>
+            {stat.direction}, {stat.yards}, {stat.play_type}
+          </div>
+        )
+      })
+    }
+
     return(
     <div className="row">
       <div className="player-search col s4">
@@ -49,6 +63,7 @@ class App extends Component {
         <input type="text" value={this.state.playerSearchLastName} name="playerSearchLastName" onChange={this.handleFieldLastName} />
         <button className="PlayerSearch btn" onClick={this.handleNewPlayerSearch}>Search</button>
       </div>
+      {stats}
     </div>
     );
   }
