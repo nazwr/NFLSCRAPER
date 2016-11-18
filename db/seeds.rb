@@ -23,7 +23,6 @@ data_object.each do |stat|
     !stat_array.include?("kicks"))
 
     current_player = Player.find_or_create_by(first_name:stat_array[1], last_name: stat_array[2])
-
     new_stat = Stat.new(player: current_player)
 
     if stat_array.include?("rush")

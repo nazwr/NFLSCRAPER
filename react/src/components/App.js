@@ -4,25 +4,51 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      players: [],
+      currentPlayerName: "",
+      playerSearchLastName: "",
+      playerSearchFirstName: "",
     };
+    this.handleFieldFirstName = this.handleFieldFirstName.bind(this);
+    this.handleFieldLastName = this.handleFieldLastName.bind(this);
+    this.handleNewPlayerSearch = this.handleNewPlayerSearch.bind(this);
   };
 
-  componentDidMount() {
+  handleFieldFirstName(e) {
+    let shift = {};
+    shift[e.target.name] = e.target.value;
+    this.setState(shift);
+  }
+
+  handleFieldLastName(e) {
+    let shift = {};
+    shift[e.target.name] = e.target.value;
+    this.setState(shift);
+  }
+
+  handleNewPlayerSearch() {
     $.ajax({
-      url: "api/v1/players",
-      method: "GET"
+      url: `api/v1/players`,
+      method: "GET",
+      data: {
+        player: {
+          last_name: this.state.playerSearchLastName,
+          first_name: this.state.playerSearchFirstName,
+        }
+      },
+      success: (data) => {
+        
+      }
     })
-    .done(data => {
-      debugger;
-      this.setState({ players: data.players });
-    });
   }
 
   render() {
     return(
     <div className="row">
-      hi
+      <div className="player-search col s4">
+        <input type="text" value={this.state.playerSearchFirstName} name="playerSearchFirstName" onChange={this.handleFieldFirstName} />
+        <input type="text" value={this.state.playerSearchLastName} name="playerSearchLastName" onChange={this.handleFieldLastName} />
+        <button className="PlayerSearch btn" onClick={this.handleNewPlayerSearch}>Search</button>
+      </div>
     </div>
     );
   }

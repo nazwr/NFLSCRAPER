@@ -1,8 +1,9 @@
 class Api::V1::PlayersController < ApiController
   def index
-    @players = Player.all
+    @player = Project.find(params[:player])
+    binding.pry
     render json: {
-      players: @players
+      player: @player
     }, status: :ok
   end
 end
