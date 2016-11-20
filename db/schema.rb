@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(version: 20161117204508) do
     t.string   "yards"
     t.string   "direction"
     t.boolean  "complete"
+    t.boolean  "touchdown"
+    t.string   "gamecode",   null: false
     t.integer  "player_id",  null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

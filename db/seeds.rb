@@ -5,8 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
-game_data = File.read("./public/2016/WEEK1/20160908007.json")
+### Need to fix kelvin benjamin rec td
+### Need to fix tevin coleman
+game_data = File.read("./public/2016/WEEK1/20160911001.json")
 data_object = JSON.parse(game_data)
 
 data_object.each do |stat|
@@ -24,6 +25,7 @@ data_object.each do |stat|
 
     current_player = Player.find_or_create_by(first_name:stat_array[1], last_name: stat_array[2])
     new_stat = Stat.new(player: current_player)
+    new_stat.gamecode = "20160911001"
 
     if stat_array.include?("rush")
       new_stat.play_type = "rush"
@@ -34,6 +36,7 @@ data_object.each do |stat|
           new_stat.direction = n
         end
       end
+
     elsif stat_array.include?("pass")
       new_stat.play_type = "pass"
       stat_array.each_with_index do |n, index|
@@ -47,10 +50,12 @@ data_object.each do |stat|
           new_stat.direction = n
         end
       end
+
     end
 
     if new_stat.play_type == "pass" && new_stat.complete == true
       rec_stat = Stat.new(play_type: "rec")
+      rec_stat.gamecode = "20160911001"
       rec_stat.yards = new_stat.yards
       rec_player = nil
       stat_array.each_with_index do |t, index|
@@ -61,10 +66,20 @@ data_object.each do |stat|
       rec_stat.player = rec_player
       rec_stat.direction = new_stat.direction
       rec_stat.complete = true
+
+    end
+
+    if stat_array.include?("TOUCHDOWN.")
+      new_stat.touchdown = true
     end
 
     new_stat.save
+
     if rec_stat != nil
+      if stat_array.include?("TOUCHDOWN.")
+        rec_stat.touchdown = true
+      end
+
       rec_stat.save
     end
 

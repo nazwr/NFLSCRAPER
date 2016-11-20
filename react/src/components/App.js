@@ -37,6 +37,7 @@ class App extends Component {
         }
       },
       success: (data) => {
+        debugger;
         this.setState({
           playerSearchStat: data.player,
         })
@@ -47,12 +48,21 @@ class App extends Component {
   render() {
     if (this.state.playerSearchStat.length !== 0) {
       var stats = "";
+      var touchdown = "";
       stats = this.state.playerSearchStat.map(stat => {
+        if (stat.touchdown === true) {
+          var touchdown = "true";
+        }
+        else {
+          var touchdown = "false";
+        }
         return(
           <div className="row" key={stat.id}>
             <p> playtype: {stat.play_type} </p>
             <p> direction: {stat.direction} </p>
             <p> yards: {stat.yards} </p>
+            <p> touchdown: {touchdown} </p>
+            <p> gamecode: {stat.gamecode} </p>
             <br></br>
           </div>
         )
