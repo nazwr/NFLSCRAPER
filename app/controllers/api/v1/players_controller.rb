@@ -1,8 +1,9 @@
 class Api::V1::PlayersController < ApiController
   def index
-    @players = Player.all
+    @player = Player.find_by(last_name: params[:player][:last_name], first_name: params[:player][:first_name])
+    @player = @player.stats
     render json: {
-      projects: @players
+      player: @player
     }, status: :ok
   end
 end
