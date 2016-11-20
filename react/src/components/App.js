@@ -50,7 +50,10 @@ class App extends Component {
       stats = this.state.playerSearchStat.map(stat => {
         return(
           <div className="row" key={stat.id}>
-            {stat.direction}, {stat.yards}, {stat.play_type}
+            <p> playtype: {stat.play_type} </p>
+            <p> direction: {stat.direction} </p>
+            <p> yards: {stat.yards} </p>
+            <br></br>
           </div>
         )
       })
@@ -63,6 +66,7 @@ class App extends Component {
         <input type="text" value={this.state.playerSearchLastName} name="playerSearchLastName" onChange={this.handleFieldLastName} />
         <button className="PlayerSearch btn" onClick={this.handleNewPlayerSearch}>Search</button>
       </div>
+      <br></br>
       {stats}
     </div>
     );
