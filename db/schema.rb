@@ -23,15 +23,16 @@ ActiveRecord::Schema.define(version: 20161117204508) do
   end
 
   create_table "stats", force: :cascade do |t|
-    t.string   "play_type",  null: false
+    t.string   "play_type",                   null: false
     t.string   "yards"
     t.string   "direction"
     t.boolean  "complete"
     t.boolean  "touchdown"
-    t.string   "gamecode",   null: false
-    t.integer  "player_id",  null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "intercepted", default: false
+    t.string   "gamecode",                    null: false
+    t.integer  "player_id",                   null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.index ["player_id"], name: "index_stats_on_player_id", using: :btree
   end
 

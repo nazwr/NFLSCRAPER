@@ -6,6 +6,7 @@ class StatsTable < ActiveRecord::Migration[5.0]
       t.string :direction, default: nil
       t.boolean :complete, default: nil
       t.boolean :touchdown, default: nil
+      t.boolean :intercepted, default: false
       t.string :gamecode, null: false
       t.belongs_to :player, null: false
       t.timestamps
