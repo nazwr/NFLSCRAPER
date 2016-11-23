@@ -9,10 +9,12 @@ class App extends Component {
       playerSearchFirstName: "",
       playerSearchStat: [],
       games: [],
+      selectedGame: "",
     };
     this.handleFieldFirstName = this.handleFieldFirstName.bind(this);
     this.handleFieldLastName = this.handleFieldLastName.bind(this);
     this.handleNewPlayerSearch = this.handleNewPlayerSearch.bind(this);
+    this.handleSelectedGame = this.handleSelectedGame.bind(this);
   };
 
   handleFieldFirstName(e) {
@@ -22,6 +24,12 @@ class App extends Component {
   }
 
   handleFieldLastName(e) {
+    let shift = {};
+    shift[e.target.name] = e.target.value;
+    this.setState(shift);
+  }
+
+  handleSelectedGame(e) {
     let shift = {};
     shift[e.target.name] = e.target.value;
     this.setState(shift);
@@ -38,6 +46,7 @@ class App extends Component {
         }
       },
       success: (data) => {
+        debugger;
         this.setState({
           games: data.games,
           playerSearchStat: data.stats,
@@ -48,6 +57,7 @@ class App extends Component {
 
   render() {
     var gameset = "";
+    var gamestats = "";
     if (this.state.games.length !== 0) {
       gameset = this.state.games.map(game => {
         return(
@@ -55,6 +65,24 @@ class App extends Component {
         )
       })
     }
+    if (this.state.games.length !== 0) {
+      gamestats = this.state.playerSearchStat.map(game => {
+        if (this.state.selectedGame === game.gamecode) {
+          return(
+            <div className="row" key={game.id}>
+              <p> playtype: {game.play_type} </p>
+              <p> direction: {game.direction} </p>
+              <p> complete: {game.complete.toString()} </p>
+              <p> intercepted: {game.intercepted.toString()} </p>
+              <p> yards: {game.yards} </p>
+              <p> touchdown: {game.touchdown.toString()} </p>
+              <br></br>
+            </div>
+          )
+      }
+      })
+    }
+
     return(
     <div className="row">
       <div className="player-search col s4">
@@ -63,7 +91,7 @@ class App extends Component {
         <button className="PlayerSearch btn" onClick={this.handleNewPlayerSearch}>Search</button>
       </div>
       <br></br>
-      <select name="GameList">
+      <select name="selectedGame" onChange={this.handleSelectedGame}>
         {gameset}
       </select>
         {gamestats}
@@ -73,27 +101,3 @@ class App extends Component {
 }
 
 export default App;
-
-
-// if (this.state.playerSearchStat.length !== 0) {
-//   var stats = "";
-//   var touchdown = "";
-//   stats = this.state.playerSearchStat.map(stat => {
-//     if (stat.touchdown === true) {
-//       var touchdown = "true";
-//     }
-//     else {
-//       var touchdown = "false";
-//     }
-//     return(
-      // <div className="row" key={stat.id}>
-//         <p> playtype: {stat.play_type} </p>
-//         <p> direction: {stat.direction} </p>
-//         <p> yards: {stat.yards} </p>
-//         <p> touchdown: {touchdown} </p>
-//         <p> gamecode: {stat.gamecode} </p>
-//         <br></br>
-//       </div>
-//     )
-//   })
-// }
