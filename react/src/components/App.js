@@ -8,6 +8,7 @@ class App extends Component {
       playerSearchLastName: "",
       playerSearchFirstName: "",
       playerSearchStat: [],
+      games: [],
     };
     this.handleFieldFirstName = this.handleFieldFirstName.bind(this);
     this.handleFieldLastName = this.handleFieldLastName.bind(this);
@@ -38,27 +39,22 @@ class App extends Component {
       },
       success: (data) => {
         this.setState({
-          playerSearchStat: data.player,
+          games: data.games,
+          playerSearchStat: data.stats,
         })
       }
     })
   }
 
   render() {
-    if (this.state.playerSearchStat.length !== 0) {
-      var stats = "";
-      stats = this.state.playerSearchStat.map(stat => {
+    var gameset = "";
+    if (this.state.games.length !== 0) {
+      gameset = this.state.games.map(game => {
         return(
-          <div className="row" key={stat.id}>
-            <p> playtype: {stat.play_type} </p>
-            <p> direction: {stat.direction} </p>
-            <p> yards: {stat.yards} </p>
-            <br></br>
-          </div>
+          <option value={game} key={game}>{game}</option>
         )
       })
     }
-
     return(
     <div className="row">
       <div className="player-search col s4">
@@ -67,10 +63,37 @@ class App extends Component {
         <button className="PlayerSearch btn" onClick={this.handleNewPlayerSearch}>Search</button>
       </div>
       <br></br>
-      {stats}
-    </div>
+      <select name="GameList">
+        {gameset}
+      </select>
+        {gamestats}
+      </div>
     );
   }
 }
 
 export default App;
+
+
+// if (this.state.playerSearchStat.length !== 0) {
+//   var stats = "";
+//   var touchdown = "";
+//   stats = this.state.playerSearchStat.map(stat => {
+//     if (stat.touchdown === true) {
+//       var touchdown = "true";
+//     }
+//     else {
+//       var touchdown = "false";
+//     }
+//     return(
+      // <div className="row" key={stat.id}>
+//         <p> playtype: {stat.play_type} </p>
+//         <p> direction: {stat.direction} </p>
+//         <p> yards: {stat.yards} </p>
+//         <p> touchdown: {touchdown} </p>
+//         <p> gamecode: {stat.gamecode} </p>
+//         <br></br>
+//       </div>
+//     )
+//   })
+// }
