@@ -1,6 +1,6 @@
 #nflscraper
 
-nflscraper is an app built with a light Ruby on Rails backend and a heavy React frontend. A user can search a player by his first and last name which returns the player's total accumulated statistics for the 2016 season along with the player's performance for individual game.
+nflscraper is an app built with a light Ruby on Rails backend and a heavy React frontend. A user can search a player by his first and last name which returns the player's total accumulated statistics for the 2016 season along with the player's statistical performance for each individual game.
 
 [NFLSCRAPER](https://nflscraper.herokuapp.com/)
 
