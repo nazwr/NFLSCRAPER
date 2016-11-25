@@ -5,7 +5,7 @@ class Api::V1::PlayersController < ApiController
     @games = @allstats.pluck(:gamecode).uniq
     render json: {
       stats: @allstats,
-      games: @games
+      games: @games,
     }, status: :ok
   end
 end
