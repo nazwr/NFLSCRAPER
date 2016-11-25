@@ -89,7 +89,7 @@ validates :last_name, presence: true;
   def completions
     total = 0
     stats.each do |stat|
-      if stat.play_type == "pass" && stat.complete
+      if stat.play_type == "pass" && stat.complete == true
         total += 1
       end
     end
@@ -99,7 +99,7 @@ validates :last_name, presence: true;
   def total_interceptions
     total = 0
     stats.each do |stat|
-      if stat.play_type == "pass" && stat.intercepted
+      if stat.play_type == "pass" && stat.intercepted == true
         total += 1
       end
     end
@@ -129,7 +129,7 @@ validates :last_name, presence: true;
   def receptions
     total = 0
     stats.each do |stat|
-      if stat.play_type = "rec"
+      if stat.play_type == "rec"
         total += 1
       end
     end

@@ -6,8 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 #
-# index = 1
-# while index <= 10
+
+
+index = 1
+reciever = ""
 Dir.foreach("./public/2016/WEEK" + "#{index}") do |file|
   next if file == "." or file == ".."
   game_data = File.read("./public/2016/WEEK" + "#{index}/" + file)
@@ -15,41 +17,41 @@ Dir.foreach("./public/2016/WEEK" + "#{index}") do |file|
   gamecode = file.chomp('.json')
   sorted_game_data.each do |stat|
     stat_array = stat.split(" ")
-    if stat_array.include?("rush") || stat_array.include?("pass")
+    stat_array.delete("Sr.")
+    stat_array.delete("Jr.")
+    stat_array.delete("III")
 
+    if stat_array.include?("rush") || stat_array.include?("pass")
 
       unless Player.find_by(first_name: stat_array[1], last_name: stat_array[2])
         current_player = Player.create(first_name: stat_array[1], last_name: stat_array[2])
       end
       current_player = Player.find_by(first_name: stat_array[1], last_name: stat_array[2])
 
+      if stat_array.include?("pass")
+        unless Player.find_by(first_name: stat_array[8], last_name: stat_array[9])
+          reciever = Player.create(first_name: stat_array[8], last_name: stat_array[9])
+        end
+        reciever = Player.find_by(first_name: stat_array[8], last_name: stat_array[9])
+      end
+
       if stat_array.include?("INTERCEPTED")
         Stat.create(play_type: "pass", yards: "0", direction: "none", complete: false, touchdown: false, intercepted: true, gamecode: gamecode, player: current_player)
-      elsif stat_array.include?("pass") && stat_array.include?("loss")
-        Stat.create(play_type: "pass", yards: "-#{stat_array[14]}" , direction: stat_array[6], complete: true, touchdown: false, gamecode: gamecode, player: current_player)
-        unless Player.find_by(first_name: stat_array[8], last_name: stat_array[9])
-          reciever = Player.create(first_name: stat_array[8], last_name: stat_array[9])
-        end
-        rec_player = Player.find_by(first_name: stat_array[8], last_name: stat_array[9])
-        Stat.create(play_type:"rec", yards: "-#{stat_array[14]}", direction: stat_array[6], complete: false, touchdown: false, gamecode: gamecode, player: rec_player)
       elsif stat_array.include?("incomplete")
         Stat.create(play_type: "pass", yards: "0", direction: stat_array[7], complete: false, touchdown: false, gamecode: gamecode, player: current_player)
+      elsif stat_array.include?("pass") && stat_array.include?("loss")
+        Stat.create(play_type: "pass", yards: "-#{stat_array[14]}" , direction: stat_array[6], complete: true, touchdown: false, gamecode: gamecode, player: current_player)
+        Stat.create(play_type:"rec", yards: "-#{stat_array[14]}", direction: stat_array[6], complete: false, touchdown: false, gamecode: gamecode, player: reciever)
       elsif stat_array[3] == "pass" && stat_array.last == "TOUCHDOWN."
         Stat.create(play_type: "pass", yards: stat_array[11] , direction: stat_array[6], complete: true, touchdown: true, gamecode: gamecode, player: current_player)
-        unless Player.find_by(first_name: stat_array[8], last_name: stat_array[9])
-          reciever = Player.create(first_name: stat_array[8], last_name: stat_array[9])
-        end
-        rec_player = Player.find_by(first_name: stat_array[8], last_name: stat_array[9])
-        Stat.create(play_type:"rec", yards: stat_array[11], direction: stat_array[6], complete: false, touchdown: true, gamecode: gamecode, player: rec_player)
+        Stat.create(play_type:"rec", yards: stat_array[11], direction: stat_array[6], complete: false, touchdown: true, gamecode: gamecode, player: reciever)
       elsif stat_array[3] == "pass"
         Stat.create(play_type: "pass", yards: stat_array[11] , direction: stat_array[6], complete: true, touchdown: false, gamecode: gamecode, player: current_player)
-        unless Player.find_by(first_name: stat_array[8], last_name: stat_array[9])
-          reciever = Player.create(first_name: stat_array[8], last_name: stat_array[9])
-        end
-        rec_player = Player.find_by(first_name: stat_array[8], last_name: stat_array[9])
-        Stat.create(play_type:"rec", yards: stat_array[11], direction: stat_array[6], complete: false, touchdown: false, gamecode: gamecode, player: rec_player)
+        Stat.create(play_type:"rec", yards: stat_array[11], direction: stat_array[6], complete: false, touchdown: false, gamecode: gamecode, player: reciever)
+      end
 
-      elsif stat_array.include?("rush") && stat_array.include?("loss")
+
+      if stat_array.include?("rush") && stat_array.include?("loss")
         Stat.create(play_type: "rush", yards: "-#{stat_array[11]}", direction: stat_array[6], complete: false, touchdown: false, gamecode: gamecode, player: current_player)
       elsif stat_array.include?("rush") && stat_array.include?("TOUCHDOWN.")
         Stat.create(play_type: "rush", yards: stat_array[8], direction: stat_array[6], complete: false, touchdown: true, gamecode: gamecode, player: current_player)
@@ -60,9 +62,79 @@ Dir.foreach("./public/2016/WEEK" + "#{index}") do |file|
       end
 
     end
-  end
+
 
 end
+end
+
+
+
+# rush up the middle
+# rush to the right
+# rush to the left
+# for a loss
+#
+
+
+
+
+# index = 1
+# while index <= 10
+# Dir.foreach("./public/2016/WEEK" + "#{index}") do |file|
+#   next if file == "." or file == ".."
+#   game_data = File.read("./public/2016/WEEK" + "#{index}/" + file)
+#   sorted_game_data = JSON.parse(game_data)
+#   gamecode = file.chomp('.json')
+#   sorted_game_data.each do |stat|
+#     stat_array = stat.split(" ")
+#     if stat_array.include?("rush") || stat_array.include?("pass")
+#
+#       unless Player.find_by(first_name: stat_array[1], last_name: stat_array[2])
+#         current_player = Player.create(first_name: stat_array[1], last_name: stat_array[2])
+#       end
+#       current_player = Player.find_by(first_name: stat_array[1], last_name: stat_array[2])
+#
+
+      # if stat_array.include?("INTERCEPTED")
+      #   Stat.create(play_type: "pass", yards: "0", direction: "none", complete: false, touchdown: false, intercepted: true, gamecode: gamecode, player: current_player)
+      # elsif stat_array.include?("pass") && stat_array.include?("loss")
+      #   Stat.create(play_type: "pass", yards: "-#{stat_array[14]}" , direction: stat_array[6], complete: true, touchdown: false, gamecode: gamecode, player: current_player)
+      #   unless Player.find_by(first_name: stat_array[8], last_name: stat_array[9])
+      #     reciever = Player.create(first_name: stat_array[8], last_name: stat_array[9])
+      #   end
+      #   rec_player = Player.find_by(first_name: stat_array[8], last_name: stat_array[9])
+      #   Stat.create(play_type:"rec", yards: "-#{stat_array[14]}", direction: stat_array[6], complete: false, touchdown: false, gamecode: gamecode, player: rec_player)
+      # elsif stat_array.include?("incomplete")
+      #   Stat.create(play_type: "pass", yards: "0", direction: stat_array[7], complete: false, touchdown: false, gamecode: gamecode, player: current_player)
+      # elsif stat_array[3] == "pass" && stat_array.last == "TOUCHDOWN."
+      #   Stat.create(play_type: "pass", yards: stat_array[11] , direction: stat_array[6], complete: true, touchdown: true, gamecode: gamecode, player: current_player)
+      #   unless Player.find_by(first_name: stat_array[8], last_name: stat_array[9])
+      #     reciever = Player.create(first_name: stat_array[8], last_name: stat_array[9])
+      #   end
+      #   rec_player = Player.find_by(first_name: stat_array[8], last_name: stat_array[9])
+      #   Stat.create(play_type:"rec", yards: stat_array[11], direction: stat_array[6], complete: false, touchdown: true, gamecode: gamecode, player: rec_player)
+      # elsif stat_array[3] == "pass"
+      #   Stat.create(play_type: "pass", yards: stat_array[11] , direction: stat_array[6], complete: true, touchdown: false, gamecode: gamecode, player: current_player)
+      #   unless Player.find_by(first_name: stat_array[8], last_name: stat_array[9])
+      #     reciever = Player.create(first_name: stat_array[8], last_name: stat_array[9])
+      #   end
+      #   rec_player = Player.find_by(first_name: stat_array[8], last_name: stat_array[9])
+      #   Stat.create(play_type:"rec", yards: stat_array[11], direction: stat_array[6], complete: false, touchdown: false, gamecode: gamecode, player: rec_player)
+
+#       if stat_array.include?("rush") && stat_array.include?("loss")
+#         Stat.create(play_type: "rush", yards: "-#{stat_array[11]}", direction: stat_array[6], complete: false, touchdown: false, gamecode: gamecode, player: current_player)
+#       elsif stat_array.include?("rush") && stat_array.include?("TOUCHDOWN.")
+#         Stat.create(play_type: "rush", yards: stat_array[8], direction: stat_array[6], complete: false, touchdown: true, gamecode: gamecode, player: current_player)
+#       elsif stat_array.include?("rush") && stat_array.include?("no") && stat_array.include?("gain")
+#         Stat.create(play_type: "rush", yards: "0", direction: stat_array[6], touchdown: false, complete: false, gamecode: gamecode, player: current_player)
+#       elsif stat_array.include?("rush")
+#         Stat.create(play_type: "rush", yards: stat_array[8], direction: stat_array[6], touchdown: false, complete: false, gamecode: gamecode, player: current_player)
+#       end
+#
+#     end
+#   end
+#
+# end
 # index += 1
 # end
 
