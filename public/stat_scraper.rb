@@ -4,8 +4,8 @@ require 'pry'
 require 'rubygems'
 require 'json'
 
-game_week = 1
-while game_week <= 10
+# game_week = 2
+# while game_week <= 11
   doc = Nokogiri::HTML(open("http://scores.nbcsports.com/fb/scoreboard.asp?week=#{game_week}"))
   a = doc.css('a')
   array = []
@@ -41,11 +41,11 @@ while game_week <= 10
       end
     end
     stat[gamecode] = gamestatarray
-    File.open("SEASON2016/#{gamecode}.json","w") do |f|
+    File.open("#{gamecode}.json","w") do |f|
       f.write(stat[gamecode].to_json)
     end
 
   end
 
-  game_week += 1
-end
+#   game_week += 1
+# end

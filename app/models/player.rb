@@ -16,6 +16,16 @@ validates :last_name, presence: true;
     total
   end
 
+  def total_tds
+    total = 0
+    stats.each do |stat|
+      if stat.touchdown == true
+        total += 1
+      end
+    end
+    total
+  end
+
   def total_pass_yards
     total = 0
     stats.each do |stat|
@@ -26,11 +36,21 @@ validates :last_name, presence: true;
     total
   end
 
-  def total_rush_yards
+  def total_pass_tds
     total = 0
     stats.each do |stat|
-      if stat.play_type == "rush"
-        total += stat.yards.to_i
+      if stat.play_type == "pass" && stat.touchdown == true
+        total += 1
+      end
+    end
+    total
+  end
+
+  def total_interceptions
+    total = 0
+    stats.each do |stat|
+      if stat.play_type == "pass" && stat.intercepted == true
+        total += 1
       end
     end
     total
@@ -39,7 +59,7 @@ validates :last_name, presence: true;
   def completions
     total = 0
     stats.each do |stat|
-      if stat.play_type == "pass" && stat.complete
+      if stat.play_type == "pass" && stat.complete == true
         total += 1
       end
     end
@@ -56,13 +76,64 @@ validates :last_name, presence: true;
     total
   end
 
-  def receptions
+  def total_rec_yards
     total = 0
     stats.each do |stat|
-      if stat.play_type = "rec"
+      if stat.play_type == "rec"
+        total += stat.yards.to_i
+      end
+    end
+    total
+  end
+
+  def total_rec_tds
+    total = 0
+    stats.each do |stat|
+      if stat.play_type == "rec" && stat.touchdown == true
         total += 1
       end
     end
     total
   end
+
+  def receptions
+    total = 0
+    stats.each do |stat|
+      if stat.play_type == "rec"
+        total += 1
+      end
+    end
+    total
+  end
+
+  def total_rush_yards
+    total = 0
+    stats.each do |stat|
+      if stat.play_type == "rush"
+        total += stat.yards.to_i
+      end
+    end
+    total
+  end
+
+  def rushing_attempts
+    total = 0
+    stats.each do |stat|
+      if stat.play_type == "rush"
+        total += 1
+      end
+    end
+    total
+  end
+
+  def total_rush_tds
+    total = 0
+    stats.each do |stat|
+      if stat.play_type == "rush" && stat.touchdown == true
+        total += 1
+      end
+    end
+    total
+  end
+
 end
