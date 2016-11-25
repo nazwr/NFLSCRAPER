@@ -107,7 +107,9 @@ class App extends Component {
     return(
     <div className="row">
       <div className="player-search col s4">
+        <label>First Name</label>
         <input type="text" value={this.state.playerSearchFirstName} name="playerSearchFirstName" onChange={this.handleFieldFirstName} />
+        <label>Last Name</label>
         <input type="text" value={this.state.playerSearchLastName} name="playerSearchLastName" onChange={this.handleFieldLastName} />
         <button className="PlayerSearch btn" onClick={this.handleNewPlayerSearch}>Search</button>
       </div>
