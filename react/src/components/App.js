@@ -10,6 +10,7 @@ class App extends Component {
       playerSearchStat: [],
       games: [],
       selectedGame: "",
+      totalSeasonStats: ""
     };
     this.handleFieldFirstName = this.handleFieldFirstName.bind(this);
     this.handleFieldLastName = this.handleFieldLastName.bind(this);
@@ -46,10 +47,10 @@ class App extends Component {
         }
       },
       success: (data) => {
-        debugger;
         this.setState({
           games: data.games,
           playerSearchStat: data.stats,
+          totalSeasonStats: data.total_season_stats
         })
       }
     })
@@ -58,6 +59,7 @@ class App extends Component {
   render() {
     var gameset = "";
     var gamestats = "";
+    var totalstats = "";
     if (this.state.games.length !== 0) {
       gameset = this.state.games.map(game => {
         return(
@@ -83,6 +85,25 @@ class App extends Component {
       })
     }
 
+      if (this.state.totalSeasonStats !== "") {
+        totalstats =
+            <div className="row">
+              <p> Total Touchdown: {this.state.totalSeasonStats.total_tds} </p>
+              <p> Total Yards: {this.state.totalSeasonStats.total_yards} </p>
+              <p> Total Passing Yards: {this.state.totalSeasonStats.total_pass_yards} </p>
+              <p> Total Passing Tds: {this.state.totalSeasonStats.total_pass_tds} </p>
+              <p> Total Interceptions: {this.state.totalSeasonStats.interceptions} </p>
+              <p> Total Completion Rate: {this.state.totalSeasonStats.completion_rate} </p>
+              <p> Total Rushing Attempts: {this.state.totalSeasonStats.total_rush_attempts} </p>
+              <p> Total Rushing Yards: {this.state.totalSeasonStats.total_rush_yards} </p>
+              <p> Total Rushing Tds: {this.state.totalSeasonStats.total_rush_tds} </p>
+              <p> Total Receptions: {this.state.totalSeasonStats.receptions} </p>
+              <p> Total Receiving Yards: {this.state.totalSeasonStats.total_rec_yards} </p>
+              <p> Total Receiving Tds: {this.state.totalSeasonStats.total_rec_tds} </p>
+              <br></br>
+            </div>
+      }
+
     return(
     <div className="row">
       <div className="player-search col s4">
@@ -91,6 +112,7 @@ class App extends Component {
         <button className="PlayerSearch btn" onClick={this.handleNewPlayerSearch}>Search</button>
       </div>
       <br></br>
+      {totalstats}
       <select name="selectedGame" onChange={this.handleSelectedGame}>
         {gameset}
       </select>

@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 #
 
-
 index = 1
 reciever = ""
+while index < 12
 Dir.foreach("./public/2016/WEEK" + "#{index}") do |file|
   next if file == "." or file == ".."
   game_data = File.read("./public/2016/WEEK" + "#{index}/" + file)
@@ -42,7 +42,7 @@ Dir.foreach("./public/2016/WEEK" + "#{index}") do |file|
       elsif stat_array.include?("pass") && stat_array.include?("loss")
         Stat.create(play_type: "pass", yards: "-#{stat_array[14]}" , direction: stat_array[6], complete: true, touchdown: false, gamecode: gamecode, player: current_player)
         Stat.create(play_type:"rec", yards: "-#{stat_array[14]}", direction: stat_array[6], complete: false, touchdown: false, gamecode: gamecode, player: reciever)
-      elsif stat_array[3] == "pass" && stat_array.last == "TOUCHDOWN."
+      elsif stat_array[3] == "pass" && stat_array.include?("TOUCHDOWN.")
         Stat.create(play_type: "pass", yards: stat_array[11] , direction: stat_array[6], complete: true, touchdown: true, gamecode: gamecode, player: current_player)
         Stat.create(play_type:"rec", yards: stat_array[11], direction: stat_array[6], complete: false, touchdown: true, gamecode: gamecode, player: reciever)
       elsif stat_array[3] == "pass"
@@ -65,6 +65,8 @@ Dir.foreach("./public/2016/WEEK" + "#{index}") do |file|
 
 
 end
+end
+index += 1
 end
 
 
