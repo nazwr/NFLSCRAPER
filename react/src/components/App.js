@@ -81,26 +81,29 @@ class App extends Component {
 
       if (this.state.totalSeasonStats !== "") {
         totalstats =
-            <div className="row" key={1}>
-              <p> Total Touchdown: {this.state.totalSeasonStats.total_tds} </p>
-              <p> Total Yards: {this.state.totalSeasonStats.total_yards} </p>
-              <p> Total Passing Yards: {this.state.totalSeasonStats.total_pass_yards} </p>
-              <p> Total Passing Tds: {this.state.totalSeasonStats.total_pass_tds} </p>
-              <p> Total Interceptions: {this.state.totalSeasonStats.interceptions} </p>
-              <p> Total Completion Rate: {this.state.totalSeasonStats.completion_rate} </p>
-              <p> Total Rushing Attempts: {this.state.totalSeasonStats.total_rush_attempts} </p>
-              <p> Total Rushing Yards: {this.state.totalSeasonStats.total_rush_yards} </p>
-              <p> Total Rushing Tds: {this.state.totalSeasonStats.total_rush_tds} </p>
-              <p> Total Receptions: {this.state.totalSeasonStats.receptions} </p>
-              <p> Total Receiving Yards: {this.state.totalSeasonStats.total_rec_yards} </p>
-              <p> Total Receiving Tds: {this.state.totalSeasonStats.total_rec_tds} </p>
-              <br></br>
+            <div className="row">
+              <div className="totalstat" key={1}>
+                <p> Total Touchdown: {this.state.totalSeasonStats.total_tds} </p>
+                <p> Total Yards: {this.state.totalSeasonStats.total_yards} </p>
+                <p> Total Passing Yards: {this.state.totalSeasonStats.total_pass_yards} </p>
+                <p> Total Passing Tds: {this.state.totalSeasonStats.total_pass_tds} </p>
+                <p> Total Interceptions: {this.state.totalSeasonStats.interceptions} </p>
+                <p> Total Completion Rate: {this.state.totalSeasonStats.completion_rate} </p>
+                <p> Total Rushing Attempts: {this.state.totalSeasonStats.total_rush_attempts} </p>
+                <p> Total Rushing Yards: {this.state.totalSeasonStats.total_rush_yards} </p>
+                <p> Total Rushing Tds: {this.state.totalSeasonStats.total_rush_tds} </p>
+                <p> Total Receptions: {this.state.totalSeasonStats.receptions} </p>
+                <p> Total Receiving Yards: {this.state.totalSeasonStats.total_rec_yards} </p>
+                <p> Total Receiving Tds: {this.state.totalSeasonStats.total_rec_tds} </p>
+                <br></br>
+              </div>
             </div>
       }
 
       if (this.state.playerSearchStat !== "") {
         gametotals =
-            <div className="row" key={2}>
+          <div className="row">
+            <div className="gametotal" key={2}>
               <p> Game Total Touchdown: {this.state.playerSearchStat.game_total_tds} </p>
               <p> Game Total Yards: {this.state.playerSearchStat.game_total_yards} </p>
               <p> Game Total Passing Yards: {this.state.playerSearchStat.game_total_pass_yards} </p>
@@ -115,6 +118,7 @@ class App extends Component {
               <p> Game Total Receiving Tds: {this.state.playerSearchStat.game_total_rec_tds} </p>
               <br></br>
             </div>
+          </div>
       }
 
     return(
@@ -129,6 +133,7 @@ class App extends Component {
       <br></br>
       {totalstats}
         <select name="selectedGame" onChange={this.handleSelectedGame}>
+          <option selected disabled>Select Game</option>
           {gameset}
         </select>
         {gametotals}
