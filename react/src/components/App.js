@@ -7,7 +7,7 @@ class App extends Component {
       currentPlayerName: "",
       playerSearchLastName: "",
       playerSearchFirstName: "",
-      playerSearchStat: [],
+      playerSearchStat: "",
       games: [],
       selectedGame: "",
       totalSeasonStats: ""
@@ -31,9 +31,20 @@ class App extends Component {
   }
 
   handleSelectedGame(e) {
-    let shift = {};
-    shift[e.target.name] = e.target.value;
-    this.setState(shift);
+    $.ajax({
+      url: `api/v1/stats`,
+      method: "GET",
+      data: {
+        gamecode: e.target.value,
+        first_name: this.state.playerSearchFirstName,
+        last_name: this.state.playerSearchLastName,
+      },
+      success: (data) => {
+        this.setState({
+          playerSearchStat: data.gametotal
+        })
+      }
+    })
   }
 
   handleNewPlayerSearch() {
@@ -49,7 +60,6 @@ class App extends Component {
       success: (data) => {
         this.setState({
           games: data.games,
-          playerSearchStat: data.stats,
           totalSeasonStats: data.total_season_stats
         })
       }
@@ -58,8 +68,9 @@ class App extends Component {
 
   render() {
     var gameset = "";
-    var gamestats = "";
+    var gametotals = "";
     var totalstats = "";
+    debugger;
     if (this.state.games.length !== 0) {
       gameset = this.state.games.map(game => {
         return(
@@ -67,27 +78,10 @@ class App extends Component {
         )
       })
     }
-    if (this.state.games.length !== 0) {
-      gamestats = this.state.playerSearchStat.map(game => {
-        if (this.state.selectedGame === game.gamecode) {
-          return(
-            <div className="row" key={game.id}>
-              <p> playtype: {game.play_type} </p>
-              <p> direction: {game.direction} </p>
-              <p> complete: {game.complete.toString()} </p>
-              <p> intercepted: {game.intercepted.toString()} </p>
-              <p> yards: {game.yards} </p>
-              <p> touchdown: {game.touchdown.toString()} </p>
-              <br></br>
-            </div>
-          )
-      }
-      })
-    }
 
       if (this.state.totalSeasonStats !== "") {
         totalstats =
-            <div className="row">
+            <div className="row" key={1}>
               <p> Total Touchdown: {this.state.totalSeasonStats.total_tds} </p>
               <p> Total Yards: {this.state.totalSeasonStats.total_yards} </p>
               <p> Total Passing Yards: {this.state.totalSeasonStats.total_pass_yards} </p>
@@ -104,6 +98,25 @@ class App extends Component {
             </div>
       }
 
+      if (this.state.playerSearchStat !== "") {
+        gametotals =
+            <div className="row" key={2}>
+              <p> Game Total Touchdown: {this.state.playerSearchStat.game_total_tds} </p>
+              <p> Game Total Yards: {this.state.playerSearchStat.game_total_yards} </p>
+              <p> Game Total Passing Yards: {this.state.playerSearchStat.game_total_pass_yards} </p>
+              <p> Game Total Passing Tds: {this.state.playerSearchStat.game_total_pass_tds} </p>
+              <p> Game Total Interceptions: {this.state.playerSearchStat.game_interceptions} </p>
+              <p> Game Total Completion Rate: {this.state.playerSearchStat.game_completion_rate} </p>
+              <p> Game Total Rushing Attempts: {this.state.playerSearchStat.game_total_rush_attempts} </p>
+              <p> Game Total Rushing Yards: {this.state.playerSearchStat.game_total_rush_yards} </p>
+              <p> Game Total Rushing Tds: {this.state.playerSearchStat.game_total_rush_tds} </p>
+              <p> Game Total Receptions: {this.state.playerSearchStat.game_receptions} </p>
+              <p> Game Total Receiving Yards: {this.state.playerSearchStat.game_total_rec_yards} </p>
+              <p> Game Total Receiving Tds: {this.state.playerSearchStat.game_total_rec_tds} </p>
+              <br></br>
+            </div>
+      }
+
     return(
     <div className="row">
       <div className="player-search col s4">
@@ -115,10 +128,10 @@ class App extends Component {
       </div>
       <br></br>
       {totalstats}
-      <select name="selectedGame" onChange={this.handleSelectedGame}>
-        {gameset}
-      </select>
-        {gamestats}
+        <select name="selectedGame" onChange={this.handleSelectedGame}>
+          {gameset}
+        </select>
+        {gametotals}
       </div>
     );
   }
