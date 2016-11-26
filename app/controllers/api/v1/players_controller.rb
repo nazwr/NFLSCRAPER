@@ -11,7 +11,7 @@ class Api::V1::PlayersController < ApiController
     @total["interceptions"] = @player.total_interceptions
     @total["completions"] = @player.completions
     @total["attempts"] = @player.attempts
-    @total["completion_rate"] = (@player.completions.to_f / @player.attempts.to_f) * 100.0
+    @total["completion_rate"] = ((@player.completions.to_f / @player.attempts.to_f) * 100.0).round(2)
     @total["total_rush_attempts"] = @player.rushing_attempts
     @total["total_rush_yards"] = @player.total_rush_yards
     @total["total_rush_tds"] = @player.total_rush_tds
