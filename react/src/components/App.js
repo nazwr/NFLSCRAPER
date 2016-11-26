@@ -60,7 +60,8 @@ class App extends Component {
       success: (data) => {
         this.setState({
           games: data.games,
-          totalSeasonStats: data.total_season_stats
+          totalSeasonStats: data.total_season_stats,
+          playerSearchStat: ""
         })
       }
     })
@@ -88,7 +89,7 @@ class App extends Component {
                 <p> Total Passing Yards: {this.state.totalSeasonStats.total_pass_yards} </p>
                 <p> Total Passing Tds: {this.state.totalSeasonStats.total_pass_tds} </p>
                 <p> Total Interceptions: {this.state.totalSeasonStats.interceptions} </p>
-                <p> Total Completion Rate: {this.state.totalSeasonStats.completion_rate} </p>
+                <p> Total Completion Rate: {this.state.totalSeasonStats.completion_rate.to_f.round(2)} </p>
                 <p> Total Rushing Attempts: {this.state.totalSeasonStats.total_rush_attempts} </p>
                 <p> Total Rushing Yards: {this.state.totalSeasonStats.total_rush_yards} </p>
                 <p> Total Rushing Tds: {this.state.totalSeasonStats.total_rush_tds} </p>
@@ -104,18 +105,18 @@ class App extends Component {
         gametotals =
           <div className="row">
             <div className="gametotal" key={2}>
-              <p> Game Total Touchdown: {this.state.playerSearchStat.game_total_tds} </p>
-              <p> Game Total Yards: {this.state.playerSearchStat.game_total_yards} </p>
-              <p> Game Total Passing Yards: {this.state.playerSearchStat.game_total_pass_yards} </p>
-              <p> Game Total Passing Tds: {this.state.playerSearchStat.game_total_pass_tds} </p>
-              <p> Game Total Interceptions: {this.state.playerSearchStat.game_interceptions} </p>
-              <p> Game Total Completion Rate: {this.state.playerSearchStat.game_completion_rate} </p>
-              <p> Game Total Rushing Attempts: {this.state.playerSearchStat.game_total_rush_attempts} </p>
-              <p> Game Total Rushing Yards: {this.state.playerSearchStat.game_total_rush_yards} </p>
-              <p> Game Total Rushing Tds: {this.state.playerSearchStat.game_total_rush_tds} </p>
-              <p> Game Total Receptions: {this.state.playerSearchStat.game_receptions} </p>
-              <p> Game Total Receiving Yards: {this.state.playerSearchStat.game_total_rec_yards} </p>
-              <p> Game Total Receiving Tds: {this.state.playerSearchStat.game_total_rec_tds} </p>
+              <p> Total Game Touchdown: {this.state.playerSearchStat.game_total_tds} </p>
+              <p> Total Game Yards: {this.state.playerSearchStat.game_total_yards} </p>
+              <p> Total Game Passing Yards: {this.state.playerSearchStat.game_total_pass_yards} </p>
+              <p> Total Game Passing Tds: {this.state.playerSearchStat.game_total_pass_tds} </p>
+              <p> Total Game Interceptions: {this.state.playerSearchStat.game_interceptions} </p>
+              <p> Total Game Completion Rate: {this.state.playerSearchStat.game_completion_rate.to_f.round(2)} </p>
+              <p> Total Game Rushing Attempts: {this.state.playerSearchStat.game_total_rush_attempts} </p>
+              <p> Total Game Rushing Yards: {this.state.playerSearchStat.game_total_rush_yards} </p>
+              <p> Total Game Rushing Tds: {this.state.playerSearchStat.game_total_rush_tds} </p>
+              <p> Total Game Receptions: {this.state.playerSearchStat.game_receptions} </p>
+              <p> Total Game Receiving Yards: {this.state.playerSearchStat.game_total_rec_yards} </p>
+              <p> Total Game Receiving Tds: {this.state.playerSearchStat.game_total_rec_tds} </p>
               <br></br>
             </div>
           </div>
