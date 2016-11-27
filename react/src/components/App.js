@@ -71,7 +71,7 @@ class App extends Component {
     var gameset = "";
     var gametotals = "";
     var totalstats = "";
-    debugger;
+
     if (this.state.games.length !== 0) {
       gameset = this.state.games.map(game => {
         return(
@@ -124,20 +124,23 @@ class App extends Component {
 
     return(
     <div className="row">
-      <div className="player-search col s4">
-        <label>First Name</label>
-        <input type="text" value={this.state.playerSearchFirstName} name="playerSearchFirstName" onChange={this.handleFieldFirstName} />
-        <label>Last Name</label>
-        <input type="text" value={this.state.playerSearchLastName} name="playerSearchLastName" onChange={this.handleFieldLastName} />
-        <button className="PlayerSearch btn" onClick={this.handleNewPlayerSearch}>Search</button>
+      <div className="small-12 medium-4 columns">
+        <div className="player-search">
+          <label>First Name</label>
+          <input type="text" value={this.state.playerSearchFirstName} name="playerSearchFirstName" onChange={this.handleFieldFirstName} />
+          <label>Last Name</label>
+          <input type="text" value={this.state.playerSearchLastName} name="playerSearchLastName" onChange={this.handleFieldLastName} />
+          <button className="PlayerSearch button" onClick={this.handleNewPlayerSearch}>Search</button>
+        </div>
       </div>
-      <br></br>
-      {totalstats}
-        <select name="selectedGame" onChange={this.handleSelectedGame}>
-          <option selected disabled>Select Game</option>
-          {gameset}
-        </select>
-        {gametotals}
+      <div className="small-12 medium-8 columns">
+        {totalstats}
+        <label>Select Game</label>
+          <select name="selectedGame" onChange={this.handleSelectedGame}>
+            {gameset}
+          </select>
+          {gametotals}
+        </div>
       </div>
     );
   }

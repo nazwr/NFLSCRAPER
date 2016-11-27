@@ -32,8 +32,55 @@ div.totalstat {
 }
 
 .top-header {
-  background: #439B4F;
+  background: #a53828;
   width: 100%;
-  text-align: center;
-  padding: 5px;
+  text-align: left;
+  padding-left: 30px;
+  margin-bottom: 30px;
 }
+
+.top-header h1 {
+  color: white;
+  font-family: 'Fugaz One', cursive;
+  font-size: 60px;
+  text-shadow: 0 1px 0 #ccc,
+    0 2px 0 #c9c9c9,
+    0 3px 0 #bbb,
+    0 4px 0 #b9b9b9,
+    0 5px 0 #aaa,
+    0 6px 1px rgba(0,0,0,.1),
+    0 0 5px rgba(0,0,0,.1),
+    0 1px 3px rgba(0,0,0,.3),
+    0 3px 5px rgba(0,0,0,.2),
+    0 5px 10px rgba(0,0,0,.25),
+    0 10px 10px rgba(0,0,0,.2),
+    0 20px 20px rgba(0,0,0,.15);
+  }
+
+  .player-search {
+    font-family: 'Raleway', sans-serif;
+  }
+
+  .button {
+    background-color: white;
+    transition: box-shadow 0.5s, ease;
+    color: black;
+  }
+
+  .button:hover {
+    background-color: white;
+    color: black;
+    box-shadow: 0 1px 0 #ccc,
+      0 2px 0 #c9c9c9,
+      0 3px 0 #bbb,
+      0 4px 0 #b9b9b9,
+      0 5px 0 #aaa,
+      0 6px 1px rgba(0,0,0,.1),
+      0 0 5px rgba(0,0,0,.1),
+      0 1px 3px rgba(0,0,0,.3),
+      0 3px 5px rgba(0,0,0,.2),
+      0 5px 10px rgba(0,0,0,.25),
+      0 10px 10px rgba(0,0,0,.2),
+      0 20px 20px rgba(0,0,0,.15);
+    transition: box-shadow 0.5s, ease;
+  }
