@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PlayerSearch from './PlayerSearch';
 
 class App extends Component {
   constructor(props) {
