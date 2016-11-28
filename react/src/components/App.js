@@ -224,6 +224,9 @@ class App extends Component {
           <select name="selectedGame" onChange={this.handleSelectedGame}>
             {gameset}
           </select>
+          <br /><br />
+          <h3>Player Info</h3>
+          <hr />
         </div>
       </div>
       <div className="small-12 large-4 columns season-totals-div">

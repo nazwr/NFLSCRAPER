@@ -16,33 +16,24 @@
 
  */
 
-div.row {
-  margin-left: 30px;
-  margin-right: 30px;
-}
-
-div.gametotal {
-  margin-left: 20px;
-  margin-right: 20px;
-}
-
-div.totalstat {
-  margin-left: 20px;
-  margin-right: 20px;
-}
+ /*@media screen and (max-width: 480px) {
+     .top-header h1 {
+       background-color: lightgreen;
+     }
+ }*/
 
 .top-header {
   background: #a53828;
   width: 100%;
-  text-align: left;
-  padding-left: 30px;
+  text-align: center;
   margin-bottom: 30px;
 }
 
 .top-header h1 {
   color: white;
   font-family: 'Fugaz One', cursive;
-  font-size: 60px;
+  font-size: 3em;
+  letter-spacing: 2px;
   text-shadow: 0 1px 0 #ccc,
     0 2px 0 #c9c9c9,
     0 3px 0 #bbb,
@@ -76,6 +67,8 @@ div.totalstat {
   .season-totals-div {
     font-family: 'Raleway', sans-serif;
     text-align: center;
+    border-left: 30px solid white;
+    border-right: 30px solid white;
   }
 
   .season-totals-div label {
@@ -95,7 +88,7 @@ div.totalstat {
   }
 
   .button {
-    transition: box-shadow 0.5s ease, font-weight 0.5s ease;
+    transition: box-shadow 0.5s ease, background 0.5s ease;
     color: white;
     background: #a53828;
     width: 100%;
@@ -103,21 +96,10 @@ div.totalstat {
   }
 
   .button:hover {
-    background: #a53828;
+    background: #943224;
     color: white;
-    box-shadow: 0 1px 0 #ccc,
-      0 2px 0 #c9c9c9,
-      0 3px 0 #bbb,
-      0 4px 0 #b9b9b9,
-      0 5px 0 #aaa,
-      0 6px 1px rgba(0,0,0,.1),
-      0 0 5px rgba(0,0,0,.1),
-      0 1px 3px rgba(0,0,0,.3),
-      0 3px 5px rgba(0,0,0,.2),
-      0 5px 10px rgba(0,0,0,.25),
-      0 10px 10px rgba(0,0,0,.2),
-      0 20px 20px rgba(0,0,0,.15);
-    transition: box-shadow 0.5s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,.3), 0 5px 10px rgba(0,0,0,.25);
+    transition: box-shadow 0.5s ease, background 0.5s ease;
   }
 
   .search-button-div {
