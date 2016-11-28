@@ -16,17 +16,108 @@
 
  */
 
-div.row {
-  margin-left: 30px;
-  margin-right: 30px;
+ /*@media screen and (max-width: 480px) {
+     .top-header h1 {
+       background-color: lightgreen;
+     }
+ }*/
+
+.top-header {
+  background: #a53828;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 30px;
 }
 
-div.gametotal {
-  margin-left: 20px;
-  margin-right: 20px;
-}
+.top-header h1 {
+  color: white;
+  font-family: 'Fugaz One', cursive;
+  font-size: 3em;
+  letter-spacing: 2px;
+  text-shadow: 0 1px 0 #ccc,
+    0 2px 0 #c9c9c9,
+    0 3px 0 #bbb,
+    0 4px 0 #b9b9b9,
+    0 5px 0 #aaa,
+    0 6px 1px rgba(0,0,0,.1),
+    0 0 5px rgba(0,0,0,.1),
+    0 1px 3px rgba(0,0,0,.3),
+    0 3px 5px rgba(0,0,0,.2),
+    0 5px 10px rgba(0,0,0,.25),
+    0 10px 10px rgba(0,0,0,.2),
+    0 20px 20px rgba(0,0,0,.15);
+  }
 
-div.totalstat {
-  margin-left: 20px;
-  margin-right: 20px;
-}
+  .page-body-div {
+    display: inline;
+    margin: auto;
+  }
+
+  .player-search {
+    font-family: 'Raleway', sans-serif;
+  }
+
+  .player-search h3 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    text-align: right;
+    font-size: 20px;
+  }
+
+  .season-totals-div {
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    border-left: 30px solid white;
+    border-right: 30px solid white;
+  }
+
+  .season-totals-div label {
+    font-weight: normal;
+    text-align: left;
+  }
+
+  .season-totals-div p {
+    font-weight: bolder;
+  }
+
+  .season-totals-div h3 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    text-align: right;
+    font-size: 20px;
+  }
+
+  .button {
+    transition: box-shadow 0.5s ease, background 0.5s ease;
+    color: white;
+    background: #a53828;
+    width: 100%;
+    font-weight: bolder;
+  }
+
+  .button:hover {
+    background: #943224;
+    color: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,.3), 0 5px 10px rgba(0,0,0,.25);
+    transition: box-shadow 0.5s ease, background 0.5s ease;
+  }
+
+  .search-button-div {
+    text-align: center;
+  }
+
+  .stat-block {
+    padding: 5px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid black;
+  }
+
+  .player-info-div {
+    text-align: left;
+    font-weight: normal;
+    padding: 20px;
+  }
+
+  .player-info-div h4 {
+    font-size: 18px;
+  }
