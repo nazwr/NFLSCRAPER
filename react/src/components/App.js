@@ -49,20 +49,27 @@ class App extends Component {
   }
 
   handleNewPlayerSearch() {
+    let searchFirstName = this.state.playerSearchFirstName.trim();
+    let searchLastName = this.state.playerSearchLastName.trim();
+    let firstName = searchFirstName[0].toUpperCase() + searchFirstName.slice(1).toLowerCase();
+    let lastName = searchLastName[0].toUpperCase() + searchLastName.slice(1).toLowerCase();
+    this.setState({});
     $.ajax({
       url: `api/v1/players`,
       method: "GET",
       data: {
         player: {
-          last_name: this.state.playerSearchLastName,
-          first_name: this.state.playerSearchFirstName,
+          last_name: lastName,
+          first_name: firstName,
         }
       },
       success: (data) => {
         this.setState({
           games: data.games,
           totalSeasonStats: data.total_season_stats,
-          playerSearchStat: ""
+          playerSearchStat: "",
+          playerSearchLastName: lastName,
+          playerSearchFirstName: firstName
         })
       }
     })
