@@ -33,7 +33,7 @@ const PlayerSearch = props => {
     <div className="row">
       <div className="player-search col s4">
         <label>First Name</label>
-        <input type="text" value={props.playerSearchFirstName} name="playerSearchFirstName" onChange={props.handleFieldFirstName} />
+        <input type="text" list="languages" value={props.playerSearchFirstName} name="playerSearchFirstName" onChange={props.handleFieldFirstName} />
         <label>Last Name</label>
         <input type="text" value={props.playerSearchLastName} name="playerSearchLastName" onChange={props.handleFieldLastName} />
         <button className="PlayerSearch btn" onClick={props.handleNewPlayerSearch}>Search</button>
@@ -48,5 +48,7 @@ const PlayerSearch = props => {
   );
 
 }
+
+
 
 export default PlayerSearch;
