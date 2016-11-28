@@ -92,11 +92,11 @@ class App extends Component {
       playerinfo =
       <div className="player-info-div row">
         <div className="row">
-          <div className="small-12 medium-4 columns">
+        <div className="small-12 medium-8 columns">
+          <img src="https://static-hosted.stats.com/fb/graphics/headshots/nfl_29435.png" />
+        </div>
+          <div className="small-12 medium-4 columns end">
             <h4>{this.state.playerSearchFirstName} {this.state.playerSearchLastName}</h4>
-          </div>
-          <div className="small-12 medium-4 columns">
-            <h4>player image here</h4>
           </div>
         </div>
         <div className="row">
