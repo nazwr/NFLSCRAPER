@@ -62,14 +62,17 @@ div.totalstat {
   }
 
   .button {
-    background-color: white;
     transition: box-shadow 0.5s, ease;
-    color: black;
+    color: white;
+    background: #a53828;
+    width: 100%;
+    font-weight: 300;
   }
 
   .button:hover {
-    background-color: white;
-    color: black;
+    background: #a53828;
+    color: white;
+    font-weight: 600;
     box-shadow: 0 1px 0 #ccc,
       0 2px 0 #c9c9c9,
       0 3px 0 #bbb,
@@ -83,4 +86,8 @@ div.totalstat {
       0 10px 10px rgba(0,0,0,.2),
       0 20px 20px rgba(0,0,0,.15);
     transition: box-shadow 0.5s, ease;
+  }
+
+  .search-div {
+    text-align: center;
   }

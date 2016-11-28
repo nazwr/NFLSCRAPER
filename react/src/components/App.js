@@ -132,7 +132,7 @@ class App extends Component {
 
     return(
     <div className="row">
-      <div className="small-12 medium-4 columns">
+      <div className="small-12 medium-4 columns search-div">
         <div className="player-search">
           <label>First Name</label>
           <input type="text" value={this.state.playerSearchFirstName} name="playerSearchFirstName" onChange={this.handleFieldFirstName} />
@@ -142,6 +142,7 @@ class App extends Component {
         </div>
       </div>
       <div className="small-12 medium-8 columns">
+        <label>Test</label>
         {totalstats}
         <label>Select Game</label>
           <select name="selectedGame" onChange={this.handleSelectedGame}>
