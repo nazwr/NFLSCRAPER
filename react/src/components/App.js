@@ -79,132 +79,151 @@ class App extends Component {
     var gameset = "";
     var gametotals = "";
     var totalstats = "";
+    var playerinfo = "";
 
     if (this.state.games.length !== 0) {
       gameset = this.state.games.map(game => {
+        var formattedName = game.slice(4, 6) + "/" + game.slice(6, 8) + "/" + game.slice(0, 4)
         return(
-          <option value={game} key={game}>{game}</option>
+          <option value={game} key={game}>{formattedName}</option>
         )
       })
+
+      playerinfo =
+      <div className="player-info-div row">
+        <div className="row">
+          <div className="small-12 medium-4 columns">
+            <h4>{this.state.playerSearchFirstName} {this.state.playerSearchLastName}</h4>
+          </div>
+          <div className="small-12 medium-4 columns">
+            <h4>player image here</h4>
+          </div>
+        </div>
+        <div className="row">
+          <div className="small-12 columns">
+            <h4>player details</h4>
+          </div>
+        </div>
+      </div>;
     }
 
-      if (this.state.totalSeasonStats !== "") {
-        totalstats =
-            <div className="row">
-              <div className="totalstat" key={1}>
-                <p>
-                  <div className="small-12 medium-6 columns stat-block">
-                    <label>Total Touchdown:</label>
-                    {this.state.totalSeasonStats.total_tds}
-                  </div>
-                  <div className="small-12 medium-6 columns stat-block">
-                    <label>Total Yards:</label>
-                    {this.state.totalSeasonStats.total_yards}
-                  </div>
-                  <div className="small-12 medium-6 columns stat-block">
-                    <label>Total Passing Yards:</label>
-                    {this.state.totalSeasonStats.total_pass_yards}
-                  </div>
-                  <div className="small-12 medium-6 columns stat-block">
-                    <label>Total Passing Tds:</label>
-                    {this.state.totalSeasonStats.total_pass_tds}
-                  </div>
-                  <div className="small-12 medium-6 columns stat-block">
-                    <label>Total Interceptions:</label>
-                    {this.state.totalSeasonStats.interceptions}
-                  </div>
-                  <div className="small-12 medium-6 columns stat-block">
-                    <label>Total Completion Rate:</label>
-                    {this.state.totalSeasonStats.completion_rate}
-                  </div>
-                  <div className="small-12 medium-6 columns stat-block">
-                    <label>Total Rushing Attempts:</label>
-                    {this.state.totalSeasonStats.total_rush_attempts}
-                  </div>
-                  <div className="small-12 medium-6 columns stat-block">
-                    <label>Total Rushing Yards:</label>
-                    {this.state.totalSeasonStats.total_rush_yards}
-                  </div>
-                  <div className="small-12 medium-6 columns stat-block">
-                    <label>Total Rushing Tds:</label>
-                    {this.state.totalSeasonStats.total_rush_tds}
-                  </div>
-                  <div className="small-12 medium-6 columns stat-block">
-                    <label>Total Receptions:</label>
-                    {this.state.totalSeasonStats.receptions}
-                  </div>
-                  <div className="small-12 medium-6 columns stat-block">
-                    <label>Total Receiving Yards:</label>
-                    {this.state.totalSeasonStats.total_rec_yards}
-                  </div>
-                  <div className="small-12 medium-6 columns stat-block">
-                    <label>Total Receiving Tds:</label>
-                    {this.state.totalSeasonStats.total_rec_tds}
-                  </div></
-                p>
-                <br></br>
-              </div>
-            </div>
-      }
-
-      if (this.state.playerSearchStat !== "") {
-        gametotals =
+    if (this.state.totalSeasonStats !== "") {
+      totalstats =
           <div className="row">
-            <div className="gametotal" key={2}>
+            <div className="totalstat" key={1}>
               <p>
-              <div className="small-12 medium-6 columns stat-block">
-                  <label>Total Game Touchdown:</label>
-                  {this.state.playerSearchStat.game_total_tds}
+                <div className="small-12 medium-6 columns stat-block">
+                  <label>Total Touchdown:</label>
+                  {this.state.totalSeasonStats.total_tds}
                 </div>
                 <div className="small-12 medium-6 columns stat-block">
-                  <label>Total Game Yards:</label>
-                  {this.state.playerSearchStat.game_total_yards}
+                  <label>Total Yards:</label>
+                  {this.state.totalSeasonStats.total_yards}
                 </div>
                 <div className="small-12 medium-6 columns stat-block">
-                  <label>Total Game Passing Yards:</label>
-                  {this.state.playerSearchStat.game_total_pass_yards}
+                  <label>Total Passing Yards:</label>
+                  {this.state.totalSeasonStats.total_pass_yards}
                 </div>
                 <div className="small-12 medium-6 columns stat-block">
-                  <label>Total Game Passing Tds:</label>
-                  {this.state.playerSearchStat.game_total_pass_tds}
+                  <label>Total Passing Tds:</label>
+                  {this.state.totalSeasonStats.total_pass_tds}
                 </div>
                 <div className="small-12 medium-6 columns stat-block">
-                  <label>Total Game Interceptions:</label>
-                  {this.state.playerSearchStat.game_interceptions}
+                  <label>Total Interceptions:</label>
+                  {this.state.totalSeasonStats.interceptions}
                 </div>
                 <div className="small-12 medium-6 columns stat-block">
-                  <label>Total Game Completion Rate:</label>
-                  {this.state.playerSearchStat.game_completion_rate}
+                  <label>Total Completion Rate:</label>
+                  {this.state.totalSeasonStats.completion_rate}
                 </div>
                 <div className="small-12 medium-6 columns stat-block">
-                  <label>Total Game Rushing Attempts:</label>
-                  {this.state.playerSearchStat.game_total_rush_attempts}
+                  <label>Total Rushing Attempts:</label>
+                  {this.state.totalSeasonStats.total_rush_attempts}
                 </div>
                 <div className="small-12 medium-6 columns stat-block">
-                  <label>Total Game Rushing Yards:</label>
-                  {this.state.playerSearchStat.game_total_rush_yards}
+                  <label>Total Rushing Yards:</label>
+                  {this.state.totalSeasonStats.total_rush_yards}
                 </div>
                 <div className="small-12 medium-6 columns stat-block">
-                  <label>Total Game Rushing Tds:</label>
-                  {this.state.playerSearchStat.game_total_rush_tds}
+                  <label>Total Rushing Tds:</label>
+                  {this.state.totalSeasonStats.total_rush_tds}
                 </div>
                 <div className="small-12 medium-6 columns stat-block">
-                  <label>Total Game Receptions:</label>
-                  {this.state.playerSearchStat.game_receptions}
+                  <label>Total Receptions:</label>
+                  {this.state.totalSeasonStats.receptions}
                 </div>
                 <div className="small-12 medium-6 columns stat-block">
-                  <label>Total Game Receiving Yards:</label>
-                  {this.state.playerSearchStat.game_total_rec_yards}
+                  <label>Total Receiving Yards:</label>
+                  {this.state.totalSeasonStats.total_rec_yards}
                 </div>
                 <div className="small-12 medium-6 columns stat-block">
-                  <label>Total Game Receiving Tds:</label>
-                  {this.state.playerSearchStat.game_total_rec_tds}
-                </div>
-              </p>
+                  <label>Total Receiving Tds:</label>
+                  {this.state.totalSeasonStats.total_rec_tds}
+                </div></
+              p>
               <br></br>
             </div>
           </div>
-      }
+    }
+
+    if (this.state.playerSearchStat !== "") {
+      gametotals =
+        <div className="row">
+          <div className="gametotal" key={2}>
+            <p>
+            <div className="small-12 medium-6 columns stat-block">
+                <label>Total Game Touchdown:</label>
+                {this.state.playerSearchStat.game_total_tds}
+              </div>
+              <div className="small-12 medium-6 columns stat-block">
+                <label>Total Game Yards:</label>
+                {this.state.playerSearchStat.game_total_yards}
+              </div>
+              <div className="small-12 medium-6 columns stat-block">
+                <label>Total Game Passing Yards:</label>
+                {this.state.playerSearchStat.game_total_pass_yards}
+              </div>
+              <div className="small-12 medium-6 columns stat-block">
+                <label>Total Game Passing Tds:</label>
+                {this.state.playerSearchStat.game_total_pass_tds}
+              </div>
+              <div className="small-12 medium-6 columns stat-block">
+                <label>Total Game Interceptions:</label>
+                {this.state.playerSearchStat.game_interceptions}
+              </div>
+              <div className="small-12 medium-6 columns stat-block">
+                <label>Total Game Completion Rate:</label>
+                {this.state.playerSearchStat.game_completion_rate}
+              </div>
+              <div className="small-12 medium-6 columns stat-block">
+                <label>Total Game Rushing Attempts:</label>
+                {this.state.playerSearchStat.game_total_rush_attempts}
+              </div>
+              <div className="small-12 medium-6 columns stat-block">
+                <label>Total Game Rushing Yards:</label>
+                {this.state.playerSearchStat.game_total_rush_yards}
+              </div>
+              <div className="small-12 medium-6 columns stat-block">
+                <label>Total Game Rushing Tds:</label>
+                {this.state.playerSearchStat.game_total_rush_tds}
+              </div>
+              <div className="small-12 medium-6 columns stat-block">
+                <label>Total Game Receptions:</label>
+                {this.state.playerSearchStat.game_receptions}
+              </div>
+              <div className="small-12 medium-6 columns stat-block">
+                <label>Total Game Receiving Yards:</label>
+                {this.state.playerSearchStat.game_total_rec_yards}
+              </div>
+              <div className="small-12 medium-6 columns stat-block">
+                <label>Total Game Receiving Tds:</label>
+                {this.state.playerSearchStat.game_total_rec_tds}
+              </div>
+            </p>
+            <br></br>
+          </div>
+        </div>
+    }
 
     return(
     <div className="row page-body-div">
@@ -227,6 +246,7 @@ class App extends Component {
           <br /><br />
           <h3>Player Info</h3>
           <hr />
+          {playerinfo}
         </div>
       </div>
       <div className="small-12 large-4 columns season-totals-div">
