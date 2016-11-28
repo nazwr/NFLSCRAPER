@@ -57,22 +57,54 @@ div.totalstat {
     0 20px 20px rgba(0,0,0,.15);
   }
 
+  .page-body-div {
+    display: inline;
+    margin: auto;
+  }
+
   .player-search {
     font-family: 'Raleway', sans-serif;
   }
 
+  .player-search h3 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    text-align: right;
+    font-size: 20px;
+  }
+
+  .season-totals-div {
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+  }
+
+  .season-totals-div label {
+    font-weight: normal;
+    text-align: left;
+  }
+
+  .season-totals-div p {
+    font-weight: bolder;
+  }
+
+  .season-totals-div h3 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    text-align: right;
+    font-size: 20px;
+  }
+
   .button {
-    transition: box-shadow 0.5s, ease;
+    transition: box-shadow 0.5s ease, font-weight 0.5s ease;
     color: white;
     background: #a53828;
     width: 100%;
-    font-weight: 300;
+    font-weight: bolder;
   }
 
   .button:hover {
     background: #a53828;
     color: white;
-    font-weight: 600;
     box-shadow: 0 1px 0 #ccc,
       0 2px 0 #c9c9c9,
       0 3px 0 #bbb,
@@ -85,9 +117,15 @@ div.totalstat {
       0 5px 10px rgba(0,0,0,.25),
       0 10px 10px rgba(0,0,0,.2),
       0 20px 20px rgba(0,0,0,.15);
-    transition: box-shadow 0.5s, ease;
+    transition: box-shadow 0.5s ease;
   }
 
-  .search-div {
+  .search-button-div {
     text-align: center;
+  }
+
+  .stat-block {
+    padding: 5px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid black;
   }
