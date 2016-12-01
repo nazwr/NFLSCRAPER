@@ -7,7 +7,9 @@ class App extends Component {
     this.state = {
       currentPlayerName: "",
       playerSearchLastName: "",
+      matchingSearchLastName: "",
       playerSearchFirstName: "",
+      matchingSearchFirstName: "",
       playerSearchStat: "",
       games: [],
       selectedGame: "",
@@ -22,13 +24,47 @@ class App extends Component {
   handleFieldFirstName(e) {
     let shift = {};
     shift[e.target.name] = e.target.value;
-    this.setState(shift);
+    if (e.target.value.length > 2) {
+      $.ajax({
+       url: `api/v1/names`,
+       method: "GET",
+       data: {
+         first_name: e.target.value,
+       },
+       success: function(data) {
+         this.setState({matchingSearchFirstName: data.matchingfirst})
+         debugger;
+       }.bind(this),
+       error: function(data) {
+       }.bind(this),
+       complete: function(data) {
+       }.bind(this)
+     })
+    }
+   this.setState(shift);
   }
 
   handleFieldLastName(e) {
     let shift = {};
     shift[e.target.name] = e.target.value;
-    this.setState(shift);
+    if (e.target.value.length > 2) {
+      $.ajax({
+       url: `api/v1/names`,
+       method: "GET",
+       data: {
+         last_name: e.target.value,
+       },
+       success: function(data) {
+         this.setState({matchingSearchLastName: data.matchinglast})
+         debugger;
+       }.bind(this),
+       error: function(data) {
+       }.bind(this),
+       complete: function(data) {
+       }.bind(this)
+     })
+    }
+   this.setState(shift);
   }
 
   handleSelectedGame(e) {
@@ -80,6 +116,8 @@ class App extends Component {
     let handleSelectedGame = this.handleSelectedGame;
     let handleFieldLastName = this.handleFieldLastName;
     let handleFieldFirstName = this.handleFieldFirstName;
+    let matchingFirst = this.state.matchingSearchFirstName;
+    let matchingLast = this.state.matchingSearchLastName;
 
     return(
       <PlayerSearch
@@ -94,6 +132,8 @@ class App extends Component {
         handleSelectedGame={handleSelectedGame}
         handleFieldLastName={handleFieldLastName}
         handleFieldFirstName={handleFieldFirstName}
+        matchingFirst={matchingFirst}
+        matchingLast={matchingLast}
       />
     );
   }
