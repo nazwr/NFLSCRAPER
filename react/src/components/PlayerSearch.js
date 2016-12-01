@@ -7,6 +7,24 @@ const PlayerSearch = props => {
   var totalSeasonStats = "";
   var totalGameStats = "";
   var playerInfo = "";
+  var searchFirst = "";
+  var searchLast = "";
+
+  if (props.matchingFirst.length !== 0) {
+    searchFirst = props.matchingFirst.map(name => {
+      return(
+        <option value={name}></option>
+      )
+    });
+  }
+
+  if (props.matchingLast.length !== 0) {
+    searchLast = props.matchingLast.map(name => {
+      return(
+        <option value={name}></option>
+      )
+    });
+  }
 
   if (props.games.length !== 0) {
     gameset = props.games.map(game => {
@@ -54,9 +72,15 @@ const PlayerSearch = props => {
           <h3>Player Search</h3>
           <hr />
           <label><b>First Name</b></label>
-          <input type="text" value={props.playerSearchFirstName} name="playerSearchFirstName" onChange={props.handleFieldFirstName} />
+          <input type="text" value={props.playerSearchFirstName} name="playerSearchFirstName" onChange={props.handleFieldFirstName} list='playerSearchFirst'/>
+            <datalist id='playerSearchFirst'>
+              {searchFirst}
+            </datalist>
           <label><b>Last Name</b></label>
-          <input type="text" value={props.playerSearchLastName} name="playerSearchLastName" onChange={props.handleFieldLastName} />
+          <input type="text" value={props.playerSearchLastName} name="playerSearchLastName" onChange={props.handleFieldLastName} list='playerSearchLast'/>
+            <datalist id='playerSearchLast'>
+              {searchLast}
+            </datalist>
           <div className="search-button-div">
             <button className="PlayerSearch button" onClick={props.handleNewPlayerSearch}>Search</button>
           </div>

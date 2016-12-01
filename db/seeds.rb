@@ -9,7 +9,7 @@
 
 index = 1
 reciever = ""
-while index < 12
+while index < 4
 Dir.foreach("./public/2016/WEEK" + "#{index}") do |file|
   next if file == "." or file == ".."
   game_data = File.read("./public/2016/WEEK" + "#{index}/" + file)

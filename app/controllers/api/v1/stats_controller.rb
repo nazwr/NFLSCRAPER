@@ -15,6 +15,9 @@ class Api::V1::StatsController < ApiController
     @gametotal["game_receptions"] = Stat.new.receptions(params[:first_name],params[:last_name],params[:gamecode])
     @gametotal["game_total_rec_yards"] = Stat.new.total_rec_yards(params[:first_name],params[:last_name],params[:gamecode])
     @gametotal["game_total_rec_tds"] = Stat.new.total_rec_tds(params[:first_name],params[:last_name],params[:gamecode])
+    if @gametotal["game_completion_rate"].nan?
+      @gametotal["game_completion_rate"] = 0
+    end
     render json: {
       gametotal: @gametotal,
     }, status: :ok
