@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 #
 
-index = 4
+index = 5
 reciever = ""
 # while index < 4
 Dir.foreach("./public/2016/WEEK" + "#{index}") do |file|
