@@ -18,6 +18,9 @@ class Api::V1::PlayersController < ApiController
     @total["receptions"] = @player.receptions
     @total["total_rec_yards"] = @player.total_rec_yards
     @total["total_rec_tds"] = @player.total_rec_tds
+    if @total["completion_rate"].nan?
+      @total["completion_rate"] = 0
+    end
     render json: {
       stats: @allstats,
       games: @games,
