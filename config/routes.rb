@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :players, only: [:index, :create, :destroy, :update]
       resources :stats, only: [:index, :create, :destroy, :update]
+      resources :names, only: [:index, :create, :destroy, :update]
     end
   end
 end
