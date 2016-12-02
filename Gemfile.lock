@@ -254,6 +254,7 @@ DEPENDENCIES
   listen
   omniauth-facebook
   pg (~> 0.15)
+  pry
   pry-rails
   puma
   rails

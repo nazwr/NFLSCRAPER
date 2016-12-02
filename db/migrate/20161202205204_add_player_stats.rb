@@ -7,5 +7,6 @@ class AddPlayerStats < ActiveRecord::Migration[5.0]
     add_column :players, :college, :string
     add_column :players, :position, :string
     add_column :players, :current_team, :string
+    add_column :players, :number, :string
   end
 end
