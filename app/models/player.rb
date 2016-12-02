@@ -1,6 +1,8 @@
 class Player < ActiveRecord::Base
-validates :first_name, presence: true;
-validates :last_name, presence: true;
+  validates :first_name, presence: true;
+  validates :last_name, presence: true;
+
+  mount_uploader :image, ImageUploader
 
   has_many :stats
 

@@ -1,0 +1,11 @@
+<%= form_for [@player], html: { multipart: true } do |f|  %>
+  <%= f.hidden_field :player_id, value: @player.id %>
+  <div class="field">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+  <br />
+  <div class="field">
+    <%= f.submit 'Update Product' %>
+  </div>
+<% end %>

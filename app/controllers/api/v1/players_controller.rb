@@ -24,7 +24,8 @@ class Api::V1::PlayersController < ApiController
     render json: {
       stats: @allstats,
       games: @games,
-      total_season_stats: @total
+      total_season_stats: @total,
+      image: @player.image_url(:standard)
     }, status: :ok
   end
 end
