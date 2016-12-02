@@ -1,6 +1,6 @@
-#nflscraper
+#NFLscraper
 
-Nflscraper is an app built with a light Ruby on Rails backend and a heavy React frontend. A user can search a player by his first and last name which returns the player's total accumulated statistics for the 2016 season along with the player's statistical performance for each individual game.
+NFLscraper is an app built with a light Ruby on Rails backend and a heavy React frontend. A user can search a player by his first and last name which returns the player's total accumulated statistics for the 2016 season along with the player's statistical performance for each individual game.
 
 Nflscraper creates JSON files of all game plays for all the games played in the 2016 season using NBC's NFL website and parses each game's JSON file seeding the database with all the players and relevant statistics.
 
