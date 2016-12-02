@@ -33,7 +33,6 @@ class App extends Component {
        },
        success: function(data) {
          this.setState({matchingSearchFirstName: data.matchingfirst})
-         debugger;
        }.bind(this),
        error: function(data) {
        }.bind(this),

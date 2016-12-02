@@ -28,8 +28,9 @@ const PlayerSearch = props => {
 
   if (props.games.length !== 0) {
     gameset = props.games.map(game => {
+      var formattedGame = game.slice(4, 6) + "/" + game.slice(6, 8) + "/" + game.slice(0, 4);
       return(
-      <option value={game} key={game}>{game}</option>
+      <option value={game} key={game}>{formattedGame}</option>
       )
     });
     playerInfo =
@@ -109,7 +110,5 @@ const PlayerSearch = props => {
   );
 
 }
-
-
 
 export default PlayerSearch;
