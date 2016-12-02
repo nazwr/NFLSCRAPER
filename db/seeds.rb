@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 #
-
+# IMAGE SEED INFO
 @players = Player.all
 
 value = @players.length
@@ -17,39 +17,44 @@ value = @players.length
   player_table = response.css('tr')
 
   row = player_table[4]
-  player_page = "http://www.nfl.com#{row.children[5].children[0].attributes["href"].value}"
+  
+  if row != nil
+    player_page = "http://www.nfl.com#{row.children[5].children[0].attributes["href"].value}"
 
-  second_call = Nokogiri::HTML(open(player_page))
-  photo_url = second_call.css('.player-photo')[0].children[1].attributes["src"].value
-  player_stats = second_call.css('.player-info')[0]
+    second_call = Nokogiri::HTML(open(player_page))
+    photo_url = second_call.css('.player-photo')[0].children[1].attributes["src"].value
+    player_stats = second_call.css('.player-info')[0]
 
-  player_height = second_call.css('.player-info').css('p')[2].children[2].text.split(" ")[1]
-  player_weight = second_call.css('.player-info').css('p')[2].children[4].text.split(" ")[1]
-  player_born = second_call.css('.player-info').css('p')[3].children.text.split(" ")[1]
-  player_years_pro = second_call.css('.player-info').css('p')[5].children[1].text.split(" ")[1][0]
-  player_college = second_call.css('.player-info').css('p')[4].children[1].text.split(" ")[1]
-  player_position = second_call.css('.player-number').text.split(" ")[1]
-  player_team = second_call.css('.player-team-links').children[1].children.text
-  player_number = second_call.css('.player-number').text.split(" ")[0].slice(-2, 2)
+    player_height = second_call.css('.player-info').css('p')[2].children[2].text.split(" ")[1]
+    player_weight = second_call.css('.player-info').css('p')[2].children[4].text.split(" ")[1]
+    player_born = second_call.css('.player-info').css('p')[3].children.text.split(" ")[1]
+    player_years_pro = second_call.css('.player-info').css('p')[5].children[1].text.split(" ")[1][0]
+    player_college = second_call.css('.player-info').css('p')[4].children[1].text.split(" ")[1]
+    player_position = second_call.css('.player-number').text.split(" ")[1]
+    player_team = second_call.css('.player-team-links').children[1].children.text
+    player_number = second_call.css('.player-number').text.split(" ")[0].slice(-2, 2)
 
-  player.height = player_height
-  player.weight = player_weight
-  player.born = player_born
-  player.years_pro = player_years_pro
-  player.college = player_college
-  player.position = player_position
-  player.current_team = player_team
-  player.number = player_number
-  player.image = photo_url
-  puts player.full_name
-  value -= 1
-  puts value
-  player.save
+    player.height = player_height
+    player.weight = player_weight
+    player.born = player_born
+    player.years_pro = player_years_pro
+    player.college = player_college
+    player.position = player_position
+    player.current_team = player_team
+    player.number = player_number
+    player.image = photo_url
+    puts player.full_name
+    value -= 1
+    puts value
+    player.save
+  end
 end
 
-# index = 5
+
+# STAT SEED INFO
+# index = 1
 # reciever = ""
-# # while index < 4
+# while index < 13
 # Dir.foreach("./public/2016/WEEK" + "#{index}") do |file|
 #   next if file == "." or file == ".."
 #   game_data = File.read("./public/2016/WEEK" + "#{index}/" + file)
@@ -102,11 +107,9 @@ end
 #       end
 #
 #     end
-#
-#
+#   end
 # end
-# end
-
+#
 # index += 1
 # end
 
