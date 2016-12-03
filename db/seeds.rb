@@ -99,7 +99,10 @@
     player_weight = second_call.css('.player-info').css('p')[2].children[4].text.split(" ")[1]
     player_born = second_call.css('.player-info').css('p')[3].children.text.split(" ")[1]
     player_years_pro = second_call.css('.player-info').css('p')[5].children[1].text.split(" ")[1]
-    player_college = second_call.css('.player-info').css('p')[4].children[1].text.split(" ")[1]
+    player_college = second_call.css('.player-info').css('p')[4].children[1].text.split(" ")
+    if player_college.length > 2
+      player_college = second_call.css('.player-info').css('p')[4].children[1].text.split(" ")[1] + " " + second_call.css('.player-info').css('p')[4].children[1].text.split(" ")[2]
+    end
     player_position = second_call.css('.player-number').text.split(" ")[1]
     player_team = second_call.css('.player-team-links').children[1].children.text
     player_number = second_call.css('.player-number').text.split(" ")[0]
