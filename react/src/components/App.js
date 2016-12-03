@@ -11,7 +11,7 @@ class App extends Component {
       playerSearchFirstName: "",
       matchingSearchFirstName: "",
       playerSearchStat: "",
-      playerImage: "",
+      player: "",
       games: [],
       selectedGame: "",
       totalSeasonStats: ""
@@ -98,7 +98,7 @@ class App extends Component {
           games: data.games,
           totalSeasonStats: data.total_season_stats,
           playerSearchStat: "",
-          playerImage: data.image
+          player: data.player
         })
       }
     })
@@ -112,6 +112,7 @@ class App extends Component {
     let selectedGame = this.state.selectedGame;
     let totalSeasonStats = this.state.totalSeasonStats;
     let playerSearchStat = this.state.playerSearchStat;
+    let player = this.state.player
     let handleNewPlayerSearch = this.handleNewPlayerSearch;
     let handleSelectedGame = this.handleSelectedGame;
     let handleFieldLastName = this.handleFieldLastName;
@@ -136,6 +137,7 @@ class App extends Component {
         matchingFirst={matchingFirst}
         matchingLast={matchingLast}
         playerImage={playerImage}
+        player={player}
       />
     );
   }

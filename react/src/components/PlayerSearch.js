@@ -37,15 +37,23 @@ const PlayerSearch = props => {
     <div className="player-info-div row">
       <div className="row">
       <div className="small-12 medium-8 columns">
-        <img src= {props.playerImage} className="player-image"/>
+        <img src= {props.player.image} className="player-image"/>
       </div>
         <div className="small-12 medium-4 columns end">
-          <h4>{props.playerSearchFirstName} {props.playerSearchLastName}</h4>
+          <h7>{props.playerSearchFirstName} {props.playerSearchLastName}</h7><br></br>
+          <br></br>
+          <h7>{props.player.current_team}</h7><br></br>
+          <br></br>
+          <h7>{props.player.position} # {props.player.number}</h7><br></br>
         </div>
       </div>
       <div className="row">
         <div className="small-12 columns">
-          <h4>player details</h4>
+           <h4>Height: {props.player.height}</h4>
+           <h4>Weight: {props.player.weight}</h4>
+           <h4>Birthday: {props.player.born}</h4>
+           <h4>Experience: {props.player.years_pro}</h4>
+           <h4>College: {props.player.college}</h4>
         </div>
       </div>
     </div>

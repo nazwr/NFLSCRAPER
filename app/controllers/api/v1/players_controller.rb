@@ -25,7 +25,7 @@ class Api::V1::PlayersController < ApiController
       stats: @allstats,
       games: @games,
       total_season_stats: @total,
-      image: @player.image
+      player: @player,
     }, status: :ok
   end
 end
