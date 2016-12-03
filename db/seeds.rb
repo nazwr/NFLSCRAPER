@@ -95,15 +95,14 @@
     second_call = Nokogiri::HTML(open(player_page))
     photo_url = second_call.css('.player-photo')[0].children[1].attributes["src"].value
     player_stats = second_call.css('.player-info')[0]
-      player_height = second_call.css('.player-info').css('p')[2].children[2].text.split(" ")[1]
+    player_height = second_call.css('.player-info').css('p')[2].children[2].text.split(" ")[1]
     player_weight = second_call.css('.player-info').css('p')[2].children[4].text.split(" ")[1]
     player_born = second_call.css('.player-info').css('p')[3].children.text.split(" ")[1]
-    player_years_pro = second_call.css('.player-info').css('p')[5].children[1].text.split(" ")[1][0]
+    player_years_pro = second_call.css('.player-info').css('p')[5].children[1].text.split(" ")[1]
     player_college = second_call.css('.player-info').css('p')[4].children[1].text.split(" ")[1]
     player_position = second_call.css('.player-number').text.split(" ")[1]
     player_team = second_call.css('.player-team-links').children[1].children.text
-    player_number = second_call.css('.player-number').text.split(" ")[0].slice(-2, 2)
-
+    player_number = second_call.css('.player-number').text.split(" ")[0]
     player.height = player_height
     player.weight = player_weight
     player.born = player_born

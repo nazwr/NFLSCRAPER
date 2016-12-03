@@ -44,7 +44,7 @@ const PlayerSearch = props => {
           <br></br>
           <h7>{props.player.current_team}</h7><br></br>
           <br></br>
-          <h7>{props.player.position} # {props.player.number}</h7><br></br>
+          <h7>{props.player.position} {props.player.number}</h7><br></br>
         </div>
       </div>
       <div className="row">
@@ -52,7 +52,7 @@ const PlayerSearch = props => {
            <h4>Height: {props.player.height}</h4>
            <h4>Weight: {props.player.weight}</h4>
            <h4>Birthday: {props.player.born}</h4>
-           <h4>Experience: {props.player.years_pro}</h4>
+           <h4>Experience: {props.player.years_pro} season</h4>
            <h4>College: {props.player.college}</h4>
         </div>
       </div>
