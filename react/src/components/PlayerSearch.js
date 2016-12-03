@@ -96,6 +96,7 @@ const PlayerSearch = props => {
           <br />
           <label><b>Select Game</b></label>
           <select name="selectedGame" onChange={props.handleSelectedGame}>
+            <option key={1}> Select Game</option>
             {gameset}
           </select>
           <br /><br />
