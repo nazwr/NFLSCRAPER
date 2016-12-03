@@ -1,0 +1,15 @@
+<div class="small-6 columns edit-form small-centered">
+    <div class="row">
+      <h1>Edit <%= @player.full_name %></h1>
+      <hr />
+    </div>
+    <div class="row">
+      <div class="small-12 medium-6 columns">
+        <%= image_tag @player.image_url(:standard) %>
+      </div>
+      <div class="small-12 medium-6 columns">
+        <%= render "form" %>
+      </div>
+    </div>
+  </div>
+</div>

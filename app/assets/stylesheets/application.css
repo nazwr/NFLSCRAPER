@@ -121,3 +121,22 @@
   .player-info-div h4 {
     font-size: 18px;
   }
+
+  .edit-form {
+    font-family: 'Raleway', sans-serif;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1), 0 2px 5px rgba(0,0,0,0.2);
+  }
+
+  .edit-form h1 {
+    font-family: 'Raleway', sans-serif;
+  }
+
+.player-image {
+  display: block;
+  margin: auto;
+  height: 150px;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1), 0 2px 5px rgba(0,0,0,0.2);
+}

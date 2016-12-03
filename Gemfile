@@ -12,6 +12,9 @@ gem 'omniauth-facebook'
 gem 'dotenv-rails'
 gem 'redis'
 gem 'foundation-rails'
+gem 'carrierwave', '>= 1.0.0.rc', '< 2.0'
+gem 'cloudinary'
+gem 'pry'
 
 group :development, :test do
   gem 'capybara'
