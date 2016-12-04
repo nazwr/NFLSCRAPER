@@ -121,6 +121,7 @@
     player.current_team = player_team
     player.number = player_number
     player.image = photo_url
+    puts player.full_name
     player.save
   end
 
