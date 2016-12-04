@@ -7,14 +7,14 @@ class App extends Component {
     this.state = {
       currentPlayerName: "",
       playerSearchLastName: "",
-      matchingSearchLastName: "",
       playerSearchFirstName: "",
-      matchingSearchFirstName: "",
       playerSearchStat: "",
-      playerImage: "",
       games: [],
+      player: "",
       selectedGame: "",
-      totalSeasonStats: ""
+      totalSeasonStats: "",
+      matchingSearchFirstName: "",
+      matchingSearchLastName: "",
     };
     this.handleFieldFirstName = this.handleFieldFirstName.bind(this);
     this.handleFieldLastName = this.handleFieldLastName.bind(this);
@@ -66,6 +66,7 @@ class App extends Component {
    this.setState(shift);
   }
 
+
   handleSelectedGame(e) {
     $.ajax({
       url: `api/v1/stats`,
@@ -84,13 +85,18 @@ class App extends Component {
   }
 
   handleNewPlayerSearch() {
+    let searchFirstName = this.state.playerSearchFirstName.trim();
+    let searchLastName = this.state.playerSearchLastName.trim();
+    let firstName = searchFirstName[0].toUpperCase() + searchFirstName.slice(1).toLowerCase();
+    let lastName = searchLastName[0].toUpperCase() + searchLastName.slice(1).toLowerCase();
+    this.setState({});
     $.ajax({
       url: `api/v1/players`,
       method: "GET",
       data: {
         player: {
-          last_name: this.state.playerSearchLastName,
-          first_name: this.state.playerSearchFirstName,
+          last_name: lastName,
+          first_name: firstName,
         }
       },
       success: (data) => {
@@ -98,7 +104,9 @@ class App extends Component {
           games: data.games,
           totalSeasonStats: data.total_season_stats,
           playerSearchStat: "",
-          playerImage: data.image
+          playerSearchLastName: lastName,
+          playerSearchFirstName: firstName,
+          player: data.player
         })
       }
     })
@@ -116,9 +124,9 @@ class App extends Component {
     let handleSelectedGame = this.handleSelectedGame;
     let handleFieldLastName = this.handleFieldLastName;
     let handleFieldFirstName = this.handleFieldFirstName;
+    let player = this.state.player;
     let matchingFirst = this.state.matchingSearchFirstName;
     let matchingLast = this.state.matchingSearchLastName;
-    let playerImage = this.state.playerImage;
 
     return(
       <PlayerSearch
@@ -133,9 +141,9 @@ class App extends Component {
         handleSelectedGame={handleSelectedGame}
         handleFieldLastName={handleFieldLastName}
         handleFieldFirstName={handleFieldFirstName}
+        player={player}
         matchingFirst={matchingFirst}
         matchingLast={matchingLast}
-        playerImage={playerImage}
       />
     );
   }
