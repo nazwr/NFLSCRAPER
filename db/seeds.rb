@@ -14,10 +14,9 @@
 # DELETE DREW BUTLER, ANDRE JOHNSON, ARIAN FOSTER
 
 # STAT SEED INFO
-<<<<<<< HEAD
 # index = 1
 # reciever = ""
-# while index < 12
+# while index < 13
 # Dir.foreach("./public/2016/WEEK" + "#{index}") do |file|
 #   next if file == "." or file == ".."
 #   game_data = File.read("./public/2016/WEEK" + "#{index}/" + file)
@@ -82,8 +81,9 @@
 # index += 1
 # end
 
+
 # IMAGE SEED INFO
-#
+
 @players = Player.all
 
 
