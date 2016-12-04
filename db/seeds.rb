@@ -14,6 +14,7 @@
 # DELETE DREW BUTLER, ANDRE JOHNSON, ARIAN FOSTER
 
 # STAT SEED INFO
+<<<<<<< HEAD
 # index = 1
 # reciever = ""
 # while index < 12
@@ -80,7 +81,6 @@
 #
 # index += 1
 # end
-
 
 # IMAGE SEED INFO
 #
