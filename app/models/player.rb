@@ -136,4 +136,12 @@ class Player < ActiveRecord::Base
     total
   end
 
+  def rbs
+    Player.where(position: "RB")
+  end
+
+  def qbs
+    Player.where(position: "QB")
+  end
+
 end
