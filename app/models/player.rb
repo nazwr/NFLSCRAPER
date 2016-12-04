@@ -136,4 +136,9 @@ class Player < ActiveRecord::Base
     total
   end
 
+  def position_all
+    self_position = self.position
+    return Player.where(position: self_position)
+  end
+
 end

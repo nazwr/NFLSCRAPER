@@ -83,49 +83,49 @@
 
 
 # IMAGE SEED INFO
-
-@players = Player.all
-
-
-@players.each do |player|
-  response = Nokogiri::HTML(open('http://www.nfl.com/players/search?category=name&filter=' + player.last_name + '%2C+' + player.first_name + '&playerType=current'))
-
-  player_table = response.css('tr')
-
-  row = player_table[4]
-
-  if row != nil
-    player_page = "http://www.nfl.com#{row.children[5].children[0].attributes["href"].value}"
-    second_call = Nokogiri::HTML(open(player_page))
-    photo_url = second_call.css('.player-photo')[0].children[1].attributes["src"].value
-    player_stats = second_call.css('.player-info')[0]
-    player_height = second_call.css('.player-info').css('p')[2].children[2].text.split(" ")[1]
-    player_weight = second_call.css('.player-info').css('p')[2].children[4].text.split(" ")[1]
-    player_born = second_call.css('.player-info').css('p')[3].children.text.split(" ")[1]
-    player_years_pro = second_call.css('.player-info').css('p')[5].children[1].text.split(" ")[1]
-    player_college = second_call.css('.player-info').css('p')[4].children[1].text.split(" ")
-    if player_college.length > 2
-      player_college = second_call.css('.player-info').css('p')[4].children[1].text.split(" ")[1] + " " + second_call.css('.player-info').css('p')[4].children[1].text.split(" ")[2]
-    else
-      player_college = second_call.css('.player-info').css('p')[4].children[1].text.split(" ").last
-    end
-    player_position = second_call.css('.player-number').text.split(" ")[1]
-    player_team = second_call.css('.player-team-links').children[1].children.text
-    player_number = second_call.css('.player-number').text.split(" ")[0]
-    player.height = player_height
-    player.weight = player_weight
-    player.born = player_born
-    player.years_pro = player_years_pro
-    player.college = player_college
-    player.position = player_position
-    player.current_team = player_team
-    player.number = player_number
-    player.image = photo_url
-    puts player.full_name
-    player.save
-  end
-
-end
+#
+# @players = Player.all
+#
+#
+# @players.each do |player|
+#   response = Nokogiri::HTML(open('http://www.nfl.com/players/search?category=name&filter=' + player.last_name + '%2C+' + player.first_name + '&playerType=current'))
+#
+#   player_table = response.css('tr')
+#
+#   row = player_table[4]
+#
+#   if row != nil
+#     player_page = "http://www.nfl.com#{row.children[5].children[0].attributes["href"].value}"
+#     second_call = Nokogiri::HTML(open(player_page))
+#     photo_url = second_call.css('.player-photo')[0].children[1].attributes["src"].value
+#     player_stats = second_call.css('.player-info')[0]
+#     player_height = second_call.css('.player-info').css('p')[2].children[2].text.split(" ")[1]
+#     player_weight = second_call.css('.player-info').css('p')[2].children[4].text.split(" ")[1]
+#     player_born = second_call.css('.player-info').css('p')[3].children.text.split(" ")[1]
+#     player_years_pro = second_call.css('.player-info').css('p')[5].children[1].text.split(" ")[1]
+#     player_college = second_call.css('.player-info').css('p')[4].children[1].text.split(" ")
+#     if player_college.length > 2
+#       player_college = second_call.css('.player-info').css('p')[4].children[1].text.split(" ")[1] + " " + second_call.css('.player-info').css('p')[4].children[1].text.split(" ")[2]
+#     else
+#       player_college = second_call.css('.player-info').css('p')[4].children[1].text.split(" ").last
+#     end
+#     player_position = second_call.css('.player-number').text.split(" ")[1]
+#     player_team = second_call.css('.player-team-links').children[1].children.text
+#     player_number = second_call.css('.player-number').text.split(" ")[0]
+#     player.height = player_height
+#     player.weight = player_weight
+#     player.born = player_born
+#     player.years_pro = player_years_pro
+#     player.college = player_college
+#     player.position = player_position
+#     player.current_team = player_team
+#     player.number = player_number
+#     player.image = photo_url
+#     puts player.full_name
+#     player.save
+#   end
+#
+# end
 
 # rush up the middle
 # rush to the right

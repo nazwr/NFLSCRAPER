@@ -36,24 +36,28 @@ const PlayerSearch = props => {
     playerInfo =
     <div className="player-info-div row">
       <div className="row">
-      <div className="small-12 medium-8 columns">
+      <div className="small-12 medium-8 columns small-centered">
         <img src= {props.player.image} className="player-image"/>
       </div>
-        <div className="small-12 medium-4 columns end">
-          <h7>{props.player.first_name} {props.player.last_name}</h7><br></br>
-          <br></br>
+        <div className="small-12 medium-8 columns end">
+          <br />
+          <h7><b>{props.player.first_name} {props.player.last_name}</b></h7><br></br>
           <h7>{props.player.current_team}</h7><br></br>
-          <br></br>
           <h7>{props.player.position} {props.player.number}</h7><br></br>
         </div>
       </div>
+      <hr />
       <div className="row">
         <div className="small-12 columns">
-           <h4>Height: {props.player.height}</h4>
-           <h4>Weight: {props.player.weight}</h4>
-           <h4>Birthday: {props.player.born}</h4>
-           <h4>Experience: {props.player.years_pro} season</h4>
-           <h4>College: {props.player.college}</h4>
+           <h7><b>Height</b>: {props.player.height}</h7>
+           <br/>
+           <h7><b>Weight</b>: {props.player.weight}</h7>
+           <br/>
+           <h7><b>Birthday</b>: {props.player.born}</h7>
+           <br/>
+           <h7><b>Experience</b>: {props.player.years_pro} season</h7>
+           <br/>
+           <h7><b>College</b>: {props.player.college}</h7>
         </div>
       </div>
     </div>
