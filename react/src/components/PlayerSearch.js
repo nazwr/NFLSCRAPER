@@ -40,7 +40,7 @@ const PlayerSearch = props => {
         <img src= {props.player.image} className="player-image"/>
       </div>
         <div className="small-12 medium-4 columns end">
-          <h7>{props.player.first_name} {props.player.last_name}</h7><br></br>
+          <h7>{props.playerSearchFirstName} {props.playerSearchLastName}</h7><br></br>
           <br></br>
           <h7>{props.player.current_team}</h7><br></br>
           <br></br>
