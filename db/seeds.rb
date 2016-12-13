@@ -16,7 +16,7 @@
 # STAT SEED INFO
 index = 1
 reciever = ""
-# while index < 15
+while index < 14
 Dir.foreach("./public/2016/WEEK" + "#{index}") do |file|
   next if file == "." or file == ".."
   game_data = File.read("./public/2016/WEEK" + "#{index}/" + file)
