@@ -9,7 +9,13 @@ class GameApp extends Component {
       allGames: "",
       SelectedGame: "",
     };
+
+    this.handleSelectedGame = this.handleSelectedGame.bind(this);
   };
+
+  handleSelectedGame() {
+
+  }
 
   componentDidMount() {
     $.ajax({
@@ -21,32 +27,21 @@ class GameApp extends Component {
     });
   }
 
-
-  // handleFieldFirstName(e) {
-  //   let shift = {};
-  //   shift[e.target.name] = e.target.value;
-  //   if (e.target.value.length > 2) {
-  //     $.ajax({
-  //      url: `api/v1/names`,
-  //      method: "GET",
-  //      data: {
-  //        first_name: e.target.value,
-  //      },
-  //      success: function(data) {
-  //        this.setState({matchingSearchFirstName: data.matchingfirst})
-  //      }.bind(this),
-  //      error: function(data) {
-  //      }.bind(this),
-  //      complete: function(data) {
-  //      }.bind(this)
-  //    })
-  //   }
-  //  this.setState(shift);
-  // }
-
   render() {
+    var searchGame = "";
+    if (this.state.allGames.length !== 0) {
+      searchGame = this.state.allGames.map(Game => {
+        return(
+          <option value={Game}></option>
+        )
+      });
+    }
+
     return(
-      <p> Yo </p>
+      <select name="selectedGame" onChange={this.handleSelectedGame}>
+        <option key={1}> Select Game</option>
+        {searchGame}
+      </select>
     );
   }
 }

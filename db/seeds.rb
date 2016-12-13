@@ -14,7 +14,7 @@
 # DELETE DREW BUTLER, ANDRE JOHNSON, ARIAN FOSTER
 
 # STAT SEED INFO
-index = 13
+index = 1
 reciever = ""
 while index < 14
 Dir.foreach("./public/2016/WEEK" + "#{index}") do |file|
