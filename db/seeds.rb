@@ -4,7 +4,7 @@
 # player 284, 150, 331, 446, 502, 534
 #
 # STAT SEED INFO
-# index = 14
+# index = 1
 # reciever = ""
 # while index < 15
 #   Dir.foreach("./public/2016/WEEK" + "#{index}") do |file|
@@ -63,63 +63,74 @@
 # end
 
 # IMAGE SEED INFO
-
-@players = Player.all
-playerinfo = Hash.new
-@players.each do |player|
-  if player.id >= 501 && player.id <= 535
-  response = Nokogiri::HTML(open('http://www.nfl.com/players/search?category=name&filter=' + player.last_name + '%2C+' + player.first_name + '&playerType=current'))
-
-  player_table = response.css('tr')
-
-  row = player_table[4]
-
-  if row != nil
-    player_page = "http://www.nfl.com#{row.children[5].children[0].attributes["href"].value}"
-    second_call = Nokogiri::HTML(open(player_page))
-    photo_url = second_call.css('.player-photo')[0].children[1].attributes["src"].value
-    player_stats = second_call.css('.player-info')[0]
-    player_height = second_call.css('.player-info').css('p')[2].children[2].text.split(" ")[1]
-    player_weight = second_call.css('.player-info').css('p')[2].children[4].text.split(" ")[1]
-    player_born = second_call.css('.player-info').css('p')[3].children.text.split(" ")[1]
-    player_years_pro = second_call.css('.player-info').css('p')[5].children[1].text.split(" ")[1]
-    player_college = second_call.css('.player-info').css('p')[4].children[1].text.split(" ")
-      if player_college.length > 2
-        player_college = second_call.css('.player-info').css('p')[4].children[1].text.split(" ")[1] + " " + second_call.css('.player-info').css('p')[4].children[1].text.split(" ")[2]
-      else
-        player_college = second_call.css('.player-info').css('p')[4].children[1].text.split(" ").last
-      end
-    player_position = second_call.css('.player-number').text.split(" ")[1]
-    player_team = second_call.css('.player-team-links').children[1].children.text
-    player_number = second_call.css('.player-number').text.split(" ")[0]
-    playerinfo["#{player.full_name}"] = Hash.new
-    playerinfo["#{player.full_name}"]["Height"] = player_height
-    playerinfo["#{player.full_name}"]["Weight"] = player_weight
-    playerinfo["#{player.full_name}"]["Birthday"] = player_born
-    playerinfo["#{player.full_name}"]["Years Pro"] = player_years_pro
-    playerinfo["#{player.full_name}"]["College"] = player_college
-    playerinfo["#{player.full_name}"]["Team"] = player_team
-    playerinfo["#{player.full_name}"]["Position"] = player_position
-    playerinfo["#{player.full_name}"]["Number"] = player_number
-    playerinfo["#{player.full_name}"]["Photo"] = photo_url
-    puts player.full_name
-  end
-end
-
-end
-
-File.open("playerinfo4.json","w") do |f|
-  f.write(playerinfo.to_json)
-end
-
+# @players = Player.all
+# playerinfo = Hash.new
+# @players.each do |player|
+#   if player.id >= 501 && player.id <= 550
+#   response = Nokogiri::HTML(open('http://www.nfl.com/players/search?category=name&filter=' + player.last_name + '%2C+' + player.first_name + '&playerType=current'))
 #
-# player.height = player_height
-# player.weight = player_weight
-# player.born = player_born
-# player.years_pro = player_years_pro
-# player.college = player_college
-# player.position = player_position
-# player.current_team = player_team
-# player.number = player_number
-# player.image = photo_url
-# player.save
+#   player_table = response.css('tr')
+#
+#   row = player_table[4]
+#
+#   if row != nil
+#     player_page = "http://www.nfl.com#{row.children[5].children[0].attributes["href"].value}"
+#     second_call = Nokogiri::HTML(open(player_page))
+#     photo_url = second_call.css('.player-photo')[0].children[1].attributes["src"].value
+#     player_stats = second_call.css('.player-info')[0]
+#     player_height = second_call.css('.player-info').css('p')[2].children[2].text.split(" ")[1]
+#     player_weight = second_call.css('.player-info').css('p')[2].children[4].text.split(" ")[1]
+#     player_born = second_call.css('.player-info').css('p')[3].children.text.split(" ")[1]
+#     player_years_pro = second_call.css('.player-info').css('p')[5].children[1].text.split(" ")[1]
+#     player_college = second_call.css('.player-info').css('p')[4].children[1].text.split(" ")
+#       if player_college.length > 2
+#         player_college = second_call.css('.player-info').css('p')[4].children[1].text.split(" ")[1] + " " + second_call.css('.player-info').css('p')[4].children[1].text.split(" ")[2]
+#       else
+#         player_college = second_call.css('.player-info').css('p')[4].children[1].text.split(" ").last
+#       end
+#     player_position = second_call.css('.player-number').text.split(" ")[1]
+#     player_team = second_call.css('.player-team-links').children[1].children.text
+#     player_number = second_call.css('.player-number').text.split(" ")[0]
+#     playerinfo["#{player.full_name}"] = Hash.new
+#     playerinfo["#{player.full_name}"]["Height"] = player_height
+#     playerinfo["#{player.full_name}"]["Weight"] = player_weight
+#     playerinfo["#{player.full_name}"]["Birthday"] = player_born
+#     playerinfo["#{player.full_name}"]["Years Pro"] = player_years_pro
+#     playerinfo["#{player.full_name}"]["College"] = player_college
+#     playerinfo["#{player.full_name}"]["Team"] = player_team
+#     playerinfo["#{player.full_name}"]["Position"] = player_position
+#     playerinfo["#{player.full_name}"]["Number"] = player_number
+#     playerinfo["#{player.full_name}"]["Photo"] = photo_url
+#     puts player.full_name
+#   end
+# end
+#
+# end
+#
+# File.open("playerinfo4.json","w") do |f|
+#   f.write(playerinfo.to_json)
+# end
+
+
+
+# PROFILE SEED INFO
+index = 1
+while index < 5
+  player_data = File.read("./public/playerprofile/playerinfo" + "#{index}.json")
+  sorted_player_data = JSON.parse(player_data)
+  sorted_player_data.each do |player|
+    name = player[0].split
+    player_name = Player.find_by(first_name: name[0], last_name: name[1])
+    player.height = player[1]["Height"]
+    player.weight = player[1]["Weight"]
+    player.born = player[1]["Birthday"]
+    player.years_pro = player[1]["Years Pro"]
+    player.college = player[1]["College"]
+    player.position = player[1]["Team"]
+    player.current_team = player[1]["Position"]
+    player.number = player[1]["Number"]
+    player.image = player[1]["Photo"]
+    player.save
+  end
+index += 1
+end
