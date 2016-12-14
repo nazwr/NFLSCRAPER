@@ -121,16 +121,16 @@ while index < 5
   sorted_player_data.each do |player|
     name = player[0].split
     player_name = Player.find_by(first_name: name[0], last_name: name[1])
-    player.height = player[1]["Height"]
-    player.weight = player[1]["Weight"]
-    player.born = player[1]["Birthday"]
-    player.years_pro = player[1]["Years Pro"]
-    player.college = player[1]["College"]
-    player.position = player[1]["Team"]
-    player.current_team = player[1]["Position"]
-    player.number = player[1]["Number"]
-    player.image = player[1]["Photo"]
-    player.save
+    player_name.height = player[1]["Height"]
+    player_name.weight = player[1]["Weight"]
+    player_name.born = player[1]["Birthday"]
+    player_name.years_pro = player[1]["Years Pro"]
+    player_name.college = player[1]["College"]
+    player_name.position = player[1]["Team"]
+    player_name.current_team = player[1]["Position"]
+    player_name.number = player[1]["Number"]
+    player_name.image = player[1]["Photo"]
+    player_name.save
   end
 index += 1
 end
