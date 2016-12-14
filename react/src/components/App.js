@@ -87,8 +87,9 @@ class App extends Component {
   handleNewPlayerSearch() {
     let searchFirstName = this.state.playerSearchFirstName.trim();
     let searchLastName = this.state.playerSearchLastName.trim();
-    let firstName = searchFirstName[0].toUpperCase() + searchFirstName.slice(1);
-    let lastName = searchLastName[0].toUpperCase() + searchLastName.slice(1);
+    let firstName = searchFirstName[0].toUpperCase() + searchFirstName.slice(1).toLowerCase();
+    let lastName = searchLastName[0].toUpperCase() + searchLastName.slice(1).toLowerCase();
+    this.setState({});
     $.ajax({
       url: `api/v1/players`,
       method: "GET",
