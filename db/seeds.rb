@@ -1,8 +1,5 @@
 # FIX
 # "Tom Brady pass to the right to Malcolm Mitchell for 4 yards for a TOUCHDOWN." FUMBLE
-# DELETE DREW BUTLER, ANDRE JOHNSON, ARIAN FOSTER, LUKE STOCKER
-# player 284, 150, 331, 446, 502, 534
-#
 # STAT SEED INFO
 # index = 1
 # reciever = ""
@@ -110,9 +107,6 @@
 # File.open("playerinfo4.json","w") do |f|
 #   f.write(playerinfo.to_json)
 # end
-
-
-
 # PROFILE SEED INFO
 index = 1
 while index < 5
