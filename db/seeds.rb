@@ -5,7 +5,7 @@
 # player 284, 150, 331, 446, 502, 534
 
 # STAT SEED INFO
-index = 13
+index = 1
 reciever = ""
 while index < 15
   Dir.foreach("./public/2016/WEEK" + "#{index}") do |file|
