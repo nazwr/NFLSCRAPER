@@ -1,11 +1,13 @@
 # FIX
 # "Tom Brady pass to the right to Malcolm Mitchell for 4 yards for a TOUCHDOWN." FUMBLE
 # DELETE DREW BUTLER, ANDRE JOHNSON, ARIAN FOSTER
-#
+
+# player 284, 150, 331, 446, 502, 534
+
 # STAT SEED INFO
-index = 1
+index = 13
 reciever = ""
-while index < 14
+while index < 15
   Dir.foreach("./public/2016/WEEK" + "#{index}") do |file|
     next if file == "." or file == ".."
     game_data = File.read("./public/2016/WEEK" + "#{index}/" + file)
