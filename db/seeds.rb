@@ -1,7 +1,7 @@
 # FIX
 # "Tom Brady pass to the right to Malcolm Mitchell for 4 yards for a TOUCHDOWN." FUMBLE
 # DELETE DREW BUTLER, ANDRE JOHNSON, ARIAN FOSTER, LUKE STOCKER
-# player 284, 150
+# player 284, 150, 331, 446, 502, 534
 #
 # STAT SEED INFO
 # index = 14
