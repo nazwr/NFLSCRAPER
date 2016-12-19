@@ -108,23 +108,36 @@
 #   f.write(playerinfo.to_json)
 # end
 # PROFILE SEED INFO
+# index = 1
+# while index < 5
+#   player_data = File.read("./public/playerprofile/playerinfo" + "#{index}.json")
+#   sorted_player_data = JSON.parse(player_data)
+#   sorted_player_data.each do |player|
+#     name = player[0].split
+#     player_name = Player.find_by(first_name: name[0], last_name: name[1])
+#     player_name.height = player[1]["Height"]
+#     player_name.weight = player[1]["Weight"]
+#     player_name.born = player[1]["Birthday"]
+#     player_name.years_pro = player[1]["Years Pro"]
+#     player_name.college = player[1]["College"]
+#     player_name.position = player[1]["Team"]
+#     player_name.current_team = player[1]["Position"]
+#     player_name.number = player[1]["Number"]
+#     player_name.image = player[1]["Photo"]
+#     player_name.save
+#   end
+# index += 1
+# end
+
+# SCHEDULE SEED INFO
 index = 1
-while index < 5
-  player_data = File.read("./public/playerprofile/playerinfo" + "#{index}.json")
-  sorted_player_data = JSON.parse(player_data)
-  sorted_player_data.each do |player|
-    name = player[0].split
-    player_name = Player.find_by(first_name: name[0], last_name: name[1])
-    player_name.height = player[1]["Height"]
-    player_name.weight = player[1]["Weight"]
-    player_name.born = player[1]["Birthday"]
-    player_name.years_pro = player[1]["Years Pro"]
-    player_name.college = player[1]["College"]
-    player_name.position = player[1]["Team"]
-    player_name.current_team = player[1]["Position"]
-    player_name.number = player[1]["Number"]
-    player_name.image = player[1]["Photo"]
-    player_name.save
+while index < 15
+  schedule_data = File.read("./public/schedule/NFL_2016_WEEK" + "#{index}.json")
+  sorted_schedule_data = JSON.parse(schedule)
+  sorted_schedule_data.each do |game|
+    binding
+    # Game.create(home: game[:home], away: game[:away], gamecode: game[:gamecode], week: game[:week])
+    # binding.pry
   end
 index += 1
 end
