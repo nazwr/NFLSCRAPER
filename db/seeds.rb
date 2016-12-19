@@ -130,14 +130,12 @@
 # end
 
 # SCHEDULE SEED INFO
-index = 1
-while index < 15
-  schedule_data = File.read("./public/schedule/NFL_2016_WEEK" + "#{index}.json")
-  sorted_schedule_data = JSON.parse(schedule)
-  sorted_schedule_data.each do |game|
-    binding
-    # Game.create(home: game[:home], away: game[:away], gamecode: game[:gamecode], week: game[:week])
-    # binding.pry
-  end
-index += 1
-end
+# index = 1
+# while index < 15
+#   schedule_data = File.read("./public/schedule/NFL_2016_WEEK" + "#{index}.json")
+#   sorted_schedule_data = JSON.parse(schedule_data)
+#   sorted_schedule_data.each do |game|
+#     Game.create(home: game["home"], away: game["away"], gamecode: game["gamecode"], week: game["week"])
+#   end
+# index += 1
+# end

@@ -4,7 +4,7 @@ class GameApp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      allweeks: "",
+      weeks: "",
       selectedWeek: "",
       allGames: "",
       SelectedGame: "",
@@ -23,16 +23,16 @@ class GameApp extends Component {
       method: "GET"
     })
     .done(data => {
-      this.setState({ allGames: data.games });
+      this.setState({ weeks: data.weeks });
     });
   }
 
   render() {
-    var searchGame = "";
-    if (this.state.allGames.length !== 0) {
-      searchGame = this.state.allGames.map(Game => {
+    var searchWeek = "";
+    if (this.state.weeks.length !== 0) {
+      searchWeek = this.state.weeks.map(Week => {
         return(
-          <option value={Game}></option>
+          <option>{Week}</option>
         )
       });
     }
@@ -40,7 +40,7 @@ class GameApp extends Component {
     return(
       <select name="selectedGame" onChange={this.handleSelectedGame}>
         <option key={1}> Select Week </option>
-        {searchGame}
+        {searchWeek}
       </select>
     );
   }
