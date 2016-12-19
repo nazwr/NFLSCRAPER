@@ -39,7 +39,7 @@ class GameApp extends Component {
 
     return(
       <select name="selectedGame" onChange={this.handleSelectedGame}>
-        <option key={1}> Select Game</option>
+        <option key={1}> Select Week </option>
         {searchGame}
       </select>
     );

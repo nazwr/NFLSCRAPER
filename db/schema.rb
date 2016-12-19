@@ -16,11 +16,12 @@ ActiveRecord::Schema.define(version: 20161213183715) do
   enable_extension "plpgsql"
 
   create_table "games", force: :cascade do |t|
-    t.string   "home_total_stats", null: false
-    t.string   "away_total_stats", null: false
-    t.string   "gamecode",         null: false
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.string   "home",       null: false
+    t.string   "away",       null: false
+    t.string   "week",       null: false
+    t.string   "gamecode",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "players", force: :cascade do |t|
