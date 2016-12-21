@@ -108,7 +108,7 @@
 #   f.write(playerinfo.to_json)
 # end
 # PROFILE SEED INFO
-index = 1
+index = 4
 while index < 5
   player_data = File.read("./public/playerprofile/playerinfo" + "#{index}.json")
   sorted_player_data = JSON.parse(player_data)
