@@ -1,7 +1,7 @@
 # FIX
 # "Tom Brady pass to the right to Malcolm Mitchell for 4 yards for a TOUCHDOWN." FUMBLE
 # STAT SEED INFO
-index = 15
+index = 1
 reciever = ""
 while index < 16
   Dir.foreach("./public/2016/WEEK" + "#{index}") do |file|
