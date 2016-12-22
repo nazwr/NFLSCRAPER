@@ -1,11 +1,15 @@
 class Api::V1::GamesController < ApiController
   def index
-    @games = Stat.all.pluck(:gamecode).uniq
-    @weeks = (13).to_a
+    @weeks = Game.all.pluck(:week).uniq
+    @games = Game.where(week: params["week"])
+    @stats = Stat.where(gamecode: params["gamecode"])
+    @players = Player.all
 
     render json: {
-    allgames: @games,
-    weeks: @weeks
+    weeks: @weeks,
+    allGames: @games,
+    allStats: @stats,
+    allPlayers: @players
     }, status: :ok
   end
 

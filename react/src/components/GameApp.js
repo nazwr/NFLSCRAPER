@@ -4,17 +4,46 @@ class GameApp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      allweeks: "",
-      selectedWeek: "",
+      weeks: "",
       allGames: "",
-      SelectedGame: "",
+      allStats: "",
+      allPlayers: "",
     };
 
-    this.handleSelectedGame = this.handleSelectedGame.bind(this);
+    this.handleSelectWeek = this.handleSelectWeek.bind(this);
+    this.handleSelectGame = this.handleSelectGame.bind(this);
+
   };
 
-  handleSelectedGame() {
+  handleSelectGame(e) {
+    $.ajax({
+      url: `api/v1/games`,
+      method: "GET",
+      data: {
+        gamecode: e.target.value,
+      },
+      success: (data) => {
+        this.setState({
+          allStats: data.allStats,
+          allPlayers: data.allPlayers
+        })
+      }
+    })
+  }
 
+  handleSelectWeek(e) {
+    $.ajax({
+      url: `api/v1/games`,
+      method: "GET",
+      data: {
+        week: e.target.value,
+      },
+      success: (data) => {
+        this.setState({
+          allGames: data.allGames
+        })
+      }
+    })
   }
 
   componentDidMount() {
@@ -23,25 +52,56 @@ class GameApp extends Component {
       method: "GET"
     })
     .done(data => {
-      this.setState({ allGames: data.games });
+      this.setState({ weeks: data.weeks });
     });
   }
 
   render() {
-    var searchGame = "";
-    if (this.state.allGames.length !== 0) {
-      searchGame = this.state.allGames.map(Game => {
+    var searchWeek = "";
+    var searchGames = "";
+    var gameStats = "";
+    if (this.state.weeks.length !== 0) {
+      searchWeek = this.state.weeks.map(Week => {
         return(
-          <option value={Game}></option>
+          <option value={Week}>{Week}</option>
         )
       });
     }
 
+    if (this.state.allGames.length !== 0) {
+      searchGames = this.state.allGames.map(Game => {
+        return(
+          <option value={Game.gamecode}>{Game.away} @ {Game.home}</option>
+        )
+      });
+    }
+
+    if (this.state.allStats.length !== 0) {
+      var playername = "";
+      gameStats = this.state.allStats.map(Stat => {
+        this.state.allPlayers.map(Player => {
+          if (Player.id === Stat.player_id) {
+            playername = Player.first_name + " " + Player.last_name
+          }
+        });
+        return(
+          <p>{playername} {Stat.play_type} {Stat.yards} </p>
+        )
+      })
+    }
+
     return(
-      <select name="selectedGame" onChange={this.handleSelectedGame}>
-        <option key={1}> Select Game</option>
-        {searchGame}
-      </select>
+      <div>
+        <select name="selectWeek" onChange={this.handleSelectWeek}>
+          <option key={1}> Select Week </option>
+          {searchWeek}
+        </select>
+        <select name="selectGames" onChange={this.handleSelectGame}>
+          <option key={1}> Select Game </option>
+          {searchGames}
+        </select>
+          {gameStats}
+      </div>
     );
   }
 }
