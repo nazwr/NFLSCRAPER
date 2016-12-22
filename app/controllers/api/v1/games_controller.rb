@@ -4,7 +4,6 @@ class Api::V1::GamesController < ApiController
     @games = Game.where(week: params["week"])
     @stats = Stat.where(gamecode: params["gamecode"])
     @players = Player.all
-    binding.pry
 
     render json: {
     weeks: @weeks,

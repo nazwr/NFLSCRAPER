@@ -77,12 +77,17 @@ class GameApp extends Component {
     }
 
     if (this.state.allStats.length !== 0) {
-      debugger;
+      var playername = "";
       gameStats = this.state.allStats.map(Stat => {
+        this.state.allPlayers.map(Player => {
+          if (Player.id === Stat.player_id) {
+            playername = Player.first_name + " " + Player.last_name
+          }
+        });
         return(
-          <p>{Stat.play_type} {Stat.yards}</p>
+          <p>{playername} {Stat.play_type} {Stat.yards} </p>
         )
-      });
+      })
     }
 
     return(
