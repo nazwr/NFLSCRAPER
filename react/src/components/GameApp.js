@@ -77,17 +77,11 @@ class GameApp extends Component {
     }
 
     if (this.state.allStats.length !== 0) {
-      var playername = "";
       gameStats = this.state.allStats.map(Stat => {
-        this.state.allPlayers.map(Player => {
-          if (Player.id === Stat.player_id) {
-            playername = Player.first_name + " " + Player.last_name
-          }
-        });
         return(
-          <p>{playername} {Stat.play_type} {Stat.yards} </p>
+          <p>{Stat.name} Passing Yards: {Stat.passing_yards} Passing Tds: {Stat.passing_tds} Interceptions: {Stat.interceptions} Attempts: {Stat.attempts} Completions: {Stat.completions} Rushing Yards: {Stat.rushing_yards} Carries: {Stat.rushing_attempts} Rushing Touchdowns: {Stat.rushing_tds} Receptions: {Stat.receptions} Receiving Yards: {Stat.receiving_yards} Receiving Touchdowns: {Stat.receiving_tds} </p>
         )
-      })
+      });
     }
 
     return(
