@@ -78,9 +78,39 @@ class GameApp extends Component {
 
     if (this.state.allStats.length !== 0) {
       gameStats = this.state.allStats.map(Stat => {
-        return(
-          <p>{Stat.name} Passing Yards: {Stat.passing_yards} Passing Tds: {Stat.passing_tds} Interceptions: {Stat.interceptions} Attempts: {Stat.attempts} Completions: {Stat.completions} Rushing Yards: {Stat.rushing_yards} Carries: {Stat.rushing_attempts} Rushing Touchdowns: {Stat.rushing_tds} Receptions: {Stat.receptions} Receiving Yards: {Stat.receiving_yards} Receiving Touchdowns: {Stat.receiving_tds} </p>
-        )
+        if (Stat.attempts > 0) {
+          return(
+            <div className="row">
+              <label>Passing: {Stat.name} </label>
+              <label>Completions: {Stat.completions} </label>
+              <label>Attempts: {Stat.attempts} </label>
+              <label>Passing Yards: {Stat.passing_yards} </label>
+              <label>Passing Touchdowns: {Stat.passing_tds} </label>
+              <label>Interceptions: {Stat.interceptions} </label>
+              <br></br>
+            </div>
+          )
+        } else if (Stat.rushing_attempts > 0) {
+          return(
+            <div className="row">
+              <label>Rushing: {Stat.name} </label>
+              <label>Carries: {Stat.rushing_attempts} </label>
+              <label>Rushing Yards: {Stat.rushing_yards} </label>
+              <label>Rushing Touchdowns: {Stat.rushing_tds} </label>
+              <br></br>
+            </div>
+          )
+        } else if (Stat.receptions > 0) {
+          return(
+            <div className="row">
+              <label>Receiving: {Stat.name} </label>
+              <label>Receptions: {Stat.receptions} </label>
+              <label>Receiving Yards: {Stat.receiving_yards} </label>
+              <label>Receiving Touchdowns: {Stat.receiving_tds} </label>
+              <br></br>
+            </div>
+          )
+        }
       });
     }
 
