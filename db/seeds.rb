@@ -4,7 +4,7 @@
 # index = 1
 # reciever = ""
 # while index < 16
-#   Dir.foreach("./public/2016/WEEK" + "#{index}") do |file|
+#   Dir.foreach("./public/stat/2016/WEEK" + "#{index}") do |file|
 #     next if file == "." or file == ".."
 #     game_data = File.read("./public/2016/WEEK" + "#{index}/" + file)
 #     gamecode = file.chomp('.json')
