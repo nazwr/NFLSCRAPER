@@ -17,7 +17,7 @@ while index < 16
         stat_array.delete("III")
 
           if stat_array[1] == "FUMBLE,"
-            stat_array = stat_array.drop(7)
+            stat_array.slice!(1,6)
           end
 
           if stat_array.include?("rush") || stat_array.include?("pass")
@@ -136,12 +136,12 @@ end
 
 
 # GAME SCHEDULE
-index = 1
-while index < 16
-  game_schedule = File.read("./public/schedule/NFL_2016_WEEK" + "#{index}.json")
-  sorted_game_schedule = JSON.parse(game_schedule)
-  sorted_game_schedule.each do |game|
-    Game.create(away: game["away"], home: game["home"], week: index, gamecode: game["gamecode"])
-  end
-index += 1
-end
+# index = 1
+# while index < 16
+#   game_schedule = File.read("./public/schedule/NFL_2016_WEEK" + "#{index}.json")
+#   sorted_game_schedule = JSON.parse(game_schedule)
+#   sorted_game_schedule.each do |game|
+#     Game.create(away: game["away"], home: game["home"], week: index, gamecode: game["gamecode"])
+#   end
+# index += 1
+# end
