@@ -5,7 +5,6 @@ class Api::V1::GamesController < ApiController
     @stats = Stat.where(gamecode: params["gamecode"])
     @game = Game.where(gamecode: params["gamecode"])
     @players = @stats.all.pluck(:player_id).uniq
-
     homestats = []
     awaystats = []
     @players.each do |player|
@@ -24,14 +23,13 @@ class Api::V1::GamesController < ApiController
       @gametotal["receptions"] = Stat.new.receptions(a.first_name,a.last_name,params[:gamecode])
       @gametotal["receiving_yards"] = Stat.new.total_rec_yards(a.first_name,a.last_name,params[:gamecode])
       @gametotal["receiving_tds"] = Stat.new.total_rec_tds(a.first_name,a.last_name,params[:gamecode])
-
-      binding.pry
-      if @game[0].home == player.current_team
+      player_team = a.current_team.split(" ")
+      player_team.pop
+      if @game[0].home == player_team.join(" ")
         homestats << @gametotal
-      else @game[0].away == player.current_team
+      else @game[0].away == player_team.join(" ")
         awaystats << @gametotal
       end
-
     end
 
     render json: {

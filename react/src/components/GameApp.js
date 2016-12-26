@@ -8,8 +8,8 @@ class GameApp extends Component {
       allGames: "",
       allStats: "",
       allPlayers: "",
-      currentHome: "",
-      currentAway: "",
+      home: "",
+      away: "",
     };
 
     this.handleSelectWeek = this.handleSelectWeek.bind(this);
@@ -26,9 +26,8 @@ class GameApp extends Component {
       },
       success: (data) => {
         this.setState({
-          allStats: data.allStats,
-          currentHome: data.game[0].home,
-          currentAway: data.game[0].away
+          home: data.homeStats,
+          away: data.awayStats
         })
       }
     })
@@ -81,8 +80,80 @@ class GameApp extends Component {
       });
     }
 
-    if (this.state.allStats.length !== 0) {
+    if (this.state.home.length !== 0) {
+      homeStats = this.state.home.map(Stat => {
+        if (Stat.attempts > 0) {
+          return(
+            <div className="row">
+              <label>Passing: {Stat.name} </label>
+              <label>Completions: {Stat.completions} </label>
+              <label>Attempts: {Stat.attempts} </label>
+              <label>Passing Yards: {Stat.passing_yards} </label>
+              <label>Passing Touchdowns: {Stat.passing_tds} </label>
+              <label>Interceptions: {Stat.interceptions} </label>
+              <br></br>
+            </div>
+          )
+        } else if (Stat.rushing_attempts > 0) {
+          return(
+            <div className="row">
+              <label>Rushing: {Stat.name} </label>
+              <label>Carries: {Stat.rushing_attempts} </label>
+              <label>Rushing Yards: {Stat.rushing_yards} </label>
+              <label>Rushing Touchdowns: {Stat.rushing_tds} </label>
+              <br></br>
+            </div>
+          )
+        } else if(Stat.receptions > 0) {
+            return(
+              <div className="row">
+                <label>Receiving: {Stat.name} </label>
+                <label>Receptions: {Stat.receptions} </label>
+                <label>Receiving Yards: {Stat.receiving_yards} </label>
+                <label>Receiving Touchdowns: {Stat.receiving_tds} </label>
+                <br></br>
+              </div>
+            )
+        }
+      })
+    }
 
+    if (this.state.away.length !== 0) {
+      awayStats = this.state.away.map(Stat => {
+        if (Stat.attempts > 0) {
+          return(
+            <div className="row">
+              <label>Passing: {Stat.name} </label>
+              <label>Completions: {Stat.completions} </label>
+              <label>Attempts: {Stat.attempts} </label>
+              <label>Passing Yards: {Stat.passing_yards} </label>
+              <label>Passing Touchdowns: {Stat.passing_tds} </label>
+              <label>Interceptions: {Stat.interceptions} </label>
+              <br></br>
+            </div>
+          )
+        } else if (Stat.rushing_attempts > 0) {
+          return(
+            <div className="row">
+              <label>Rushing: {Stat.name} </label>
+              <label>Carries: {Stat.rushing_attempts} </label>
+              <label>Rushing Yards: {Stat.rushing_yards} </label>
+              <label>Rushing Touchdowns: {Stat.rushing_tds} </label>
+              <br></br>
+            </div>
+          )
+        } else if(Stat.receptions > 0) {
+            return(
+              <div className="row">
+                <label>Receiving: {Stat.name} </label>
+                <label>Receptions: {Stat.receptions} </label>
+                <label>Receiving Yards: {Stat.receiving_yards} </label>
+                <label>Receiving Touchdowns: {Stat.receiving_tds} </label>
+                <br></br>
+              </div>
+            )
+        }
+      })
     }
 
     return(
@@ -95,61 +166,17 @@ class GameApp extends Component {
           <option key={1}> Select Game </option>
           {searchGames}
         </select>
-          {homeStats}
-          {awayStats}
+          <div className="row">
+            <div className="small-12 medium-6 columns">
+              {homeStats}
+            </div>
+            <div className="small-12 medium-6 columns">
+              {awayStats}
+            </div>
+          </div>
       </div>
     );
   }
 }
 
 export default GameApp;
-
-
-// if (this.state.allStats.length !== 0) {
-//   rushingStats = this.state.allStats.map(Stat => {
-//     if (Stat.rushing_attempts > 0) {
-//       return(
-//         <div className="row">
-//           <label>Rushing: {Stat.name} </label>
-//           <label>Carries: {Stat.rushing_attempts} </label>
-//           <label>Rushing Yards: {Stat.rushing_yards} </label>
-//           <label>Rushing Touchdowns: {Stat.rushing_tds} </label>
-//           <br></br>
-//         </div>
-//       )
-//     }
-//   })
-// }
-//
-// if (this.state.allStats.length !== 0) {
-//   receivingStats = this.state.allStats.map(Stat => {
-//     if (Stat.receptions > 0) {
-//         return(
-//           <div className="row">
-//             <label>Receiving: {Stat.name} </label>
-//             <label>Receptions: {Stat.receptions} </label>
-//             <label>Receiving Yards: {Stat.receiving_yards} </label>
-//             <label>Receiving Touchdowns: {Stat.receiving_tds} </label>
-//             <br></br>
-//           </div>
-//         )
-//     }
-//   })
-// }
-// if (this.state.allStats.length !== 0) {
-//   passingStats = this.state.allStats.map(Stat => {
-//     if (Stat.attempts > 0) {
-//       return(
-//         <div className="row">
-//           <label>Passing: {Stat.name} </label>
-//           <label>Completions: {Stat.completions} </label>
-//           <label>Attempts: {Stat.attempts} </label>
-//           <label>Passing Yards: {Stat.passing_yards} </label>
-//           <label>Passing Touchdowns: {Stat.passing_tds} </label>
-//           <label>Interceptions: {Stat.interceptions} </label>
-//           <br></br>
-//         </div>
-//       )
-//     }
-//   })
-// }
