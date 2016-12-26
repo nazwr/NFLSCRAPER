@@ -23,6 +23,9 @@ class Api::V1::GamesController < ApiController
       @gametotal["receptions"] = Stat.new.receptions(a.first_name,a.last_name,params[:gamecode])
       @gametotal["receiving_yards"] = Stat.new.total_rec_yards(a.first_name,a.last_name,params[:gamecode])
       @gametotal["receiving_tds"] = Stat.new.total_rec_tds(a.first_name,a.last_name,params[:gamecode])
+      if a.current_team == nil
+        next
+      end
       player_team = a.current_team.split(" ")
       player_team.pop
       if @game[0].home == player_team.join(" ")
