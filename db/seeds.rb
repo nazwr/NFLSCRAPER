@@ -18,7 +18,6 @@ while index < 16
 
           if stat_array[1] == "FUMBLE,"
             stat_array = stat_array.drop(7)
-            binding.pry
           end
 
           if stat_array.include?("rush") || stat_array.include?("pass")
