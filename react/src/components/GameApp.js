@@ -8,6 +8,8 @@ class GameApp extends Component {
       allGames: "",
       allStats: "",
       allPlayers: "",
+      home: "",
+      away: "",
     };
 
     this.handleSelectWeek = this.handleSelectWeek.bind(this);
@@ -24,8 +26,8 @@ class GameApp extends Component {
       },
       success: (data) => {
         this.setState({
-          allStats: data.allStats,
-          allPlayers: data.allPlayers
+          home: data.homeStats,
+          away: data.awayStats
         })
       }
     })
@@ -59,9 +61,8 @@ class GameApp extends Component {
   render() {
     var searchWeek = "";
     var searchGames = "";
-    var passingStats = "";
-    var rushingStats = "";
-    var receivingStats = "";
+    var homeStats = "";
+    var awayStats = "";
 
     if (this.state.weeks.length !== 0) {
       searchWeek = this.state.weeks.map(Week => {
@@ -79,8 +80,8 @@ class GameApp extends Component {
       });
     }
 
-    if (this.state.allStats.length !== 0) {
-      passingStats = this.state.allStats.map(Stat => {
+    if (this.state.home.length !== 0) {
+      homeStats = this.state.home.map(Stat => {
         if (Stat.attempts > 0) {
           return(
             <div className="row">
@@ -93,13 +94,7 @@ class GameApp extends Component {
               <br></br>
             </div>
           )
-        }
-      })
-    }
-
-    if (this.state.allStats.length !== 0) {
-      rushingStats = this.state.allStats.map(Stat => {
-        if (Stat.rushing_attempts > 0) {
+        } else if (Stat.rushing_attempts > 0) {
           return(
             <div className="row">
               <label>Rushing: {Stat.name} </label>
@@ -109,13 +104,45 @@ class GameApp extends Component {
               <br></br>
             </div>
           )
+        } else if(Stat.receptions > 0) {
+            return(
+              <div className="row">
+                <label>Receiving: {Stat.name} </label>
+                <label>Receptions: {Stat.receptions} </label>
+                <label>Receiving Yards: {Stat.receiving_yards} </label>
+                <label>Receiving Touchdowns: {Stat.receiving_tds} </label>
+                <br></br>
+              </div>
+            )
         }
       })
     }
 
-    if (this.state.allStats.length !== 0) {
-      receivingStats = this.state.allStats.map(Stat => {
-        if (Stat.receptions > 0) {
+    if (this.state.away.length !== 0) {
+      awayStats = this.state.away.map(Stat => {
+        if (Stat.attempts > 0) {
+          return(
+            <div className="row">
+              <label>Passing: {Stat.name} </label>
+              <label>Completions: {Stat.completions} </label>
+              <label>Attempts: {Stat.attempts} </label>
+              <label>Passing Yards: {Stat.passing_yards} </label>
+              <label>Passing Touchdowns: {Stat.passing_tds} </label>
+              <label>Interceptions: {Stat.interceptions} </label>
+              <br></br>
+            </div>
+          )
+        } else if (Stat.rushing_attempts > 0) {
+          return(
+            <div className="row">
+              <label>Rushing: {Stat.name} </label>
+              <label>Carries: {Stat.rushing_attempts} </label>
+              <label>Rushing Yards: {Stat.rushing_yards} </label>
+              <label>Rushing Touchdowns: {Stat.rushing_tds} </label>
+              <br></br>
+            </div>
+          )
+        } else if(Stat.receptions > 0) {
             return(
               <div className="row">
                 <label>Receiving: {Stat.name} </label>
@@ -139,15 +166,14 @@ class GameApp extends Component {
           <option key={1}> Select Game </option>
           {searchGames}
         </select>
-          Passing
-          {passingStats}
-          <br></br>
-          Rushing
-          {rushingStats}
-          <br></br>
-          Receiving
-          {receivingStats}
-          <br></br>
+          <div className="row">
+            <div className="small-12 medium-6 columns">
+              {homeStats}
+            </div>
+            <div className="small-12 medium-6 columns">
+              {awayStats}
+            </div>
+          </div>
       </div>
     );
   }
