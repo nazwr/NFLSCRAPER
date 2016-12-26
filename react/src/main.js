@@ -2,7 +2,7 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App.js';
-import GameApp from './components/game/GameApp.js';
+import GameApp from './components/GameApp.js';
 import { Router, Route, browserHistory } from 'react-router'
 
 $(function() {
