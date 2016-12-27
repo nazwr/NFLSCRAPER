@@ -67,7 +67,6 @@
 # IMAGE SEED INFO
 @players = Player.all
 playerinfo = Hash.new
-players = []
 @players.each do |player|
   if player.id >= 501 && player.id <= @players.length
   response = Nokogiri::HTML(open('http://www.nfl.com/players/search?category=name&filter=' + player.last_name + '%2C+' + player.first_name + '&playerType=current'))
@@ -105,13 +104,12 @@ players = []
     playerinfo["#{player.full_name}"]["Number"] = player_number
     playerinfo["#{player.full_name}"]["Photo"] = photo_url
     puts player.full_name + " " + "#{player.id}"
-    players << playerinfo
   end
 end
 end
 
 File.open("playerinfo6.json","w") do |f|
-  f.write(players.to_json)
+  f.write(playerinfo.to_json)
 end
 # PROFILE SEED INFO
 # index = 1
