@@ -1,6 +1,6 @@
 # require 'rails_helper'
 #
-# RSpec.describe Question, type: :model do
+# RSpec.describe Stat, type: :model do
 #   it { should have_valid(:content).when('This is a new question.', 'This is an another question.') }
 #   it { should_not have_valid(:content).when(nil, '') }
 # end
