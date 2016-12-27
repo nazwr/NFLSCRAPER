@@ -134,7 +134,6 @@ end
 #   end
 # index += 1
 # end
-# "Tom Brady":{"Height":"6-4","Weight":"225", "Birthday":"8/3/1977","Years Pro":"17th","College":"Michigan" ,"Team":"New England Patriots","Position":"QB","Number":"#12","Photo":"http://static.nfl.com/static/content/public/static/img/fantasy/transparent/200x200/BRA371156.png"}, "Le'Veon Bell":{"Height":"6-1","Weight":"225","Birthday":"2/18/1977","Years Pro":"4th","College":"Michigan State" ,"Team":"Pittsburgh Steelers","Position":"RB","Number":"#26","Photo":"http://static.nfl.com/static/content/public/static/img/fantasy/transparent/200x200/BEL474300.png"}}
 
 # GAME SCHEDULE
 # index = 1
