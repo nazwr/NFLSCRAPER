@@ -4,6 +4,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require "spec_helper"
 require "rspec/rails"
 require_relative "../spec/support/database_cleaner"
+require "support/factory_girl"
 
 ActiveRecord::Migration.maintain_test_schema!
 

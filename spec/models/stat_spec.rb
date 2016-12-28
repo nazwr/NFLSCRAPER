@@ -1,30 +1,16 @@
-# require 'rails_helper'
-#
-# RSpec.describe Stat, type: :model do
-#   it { should have_valid(:content).when('This is a new question.', 'This is an another question.') }
-#   it { should_not have_valid(:content).when(nil, '') }
-# end
-#
-# describe "#questionnaire" do
-#   it "question belongs to questionnaire1" do
-#     questionnaire1 = FactoryGirl.create(:questionnaire)
-#     questionnaire2 = FactoryGirl.create(:questionnaire)
-#     question = FactoryGirl.create(:question, questionnaire_id: questionnaire1.id, reverse: true)
-#     expect(question.questionnaire_id).to eq(questionnaire1.id)
-#     expect(question.questionnaire_id).not_to eq(questionnaire2.id)
-#   end
-# end
-#
-# describe "#reverse" do
-#   it "question is reversed" do
-#     questionnaire1 = FactoryGirl.create(:questionnaire)
-#     question = FactoryGirl.create(:question, questionnaire_id: questionnaire1.id, reverse: true)
-#     expect(question.reverse).to eq(true)
-#   end
-#
-#   it "question is not reversed" do
-#     questionnaire1 = FactoryGirl.create(:questionnaire)
-#     question = FactoryGirl.create(:question, questionnaire_id: questionnaire1.id, reverse: false)
-#     expect(question.reverse).to eq(false)
-#   end
-# end
+require 'rails_helper'
+
+RSpec.describe Stat, type: :model do
+  it { should have_valid(:play_type).when('pass', 'rec', 'rush') }
+  it { should_not have_valid(:play_type).when(nil, '') }
+
+  it { should have_valid(:direction).when('left', 'middle', 'right') }
+  it { should_not have_valid(:direction).when(nil, '') }
+
+  it { should have_valid(:gamecode).when('20160908007', '20161226006') }
+  it { should_not have_valid(:gamecode).when(nil, '') }
+
+  it { should_not have_valid(:complete).when(nil, '') }
+  it { should_not have_valid(:touchdown).when(nil, '') }
+  it { should_not have_valid(:intercepted).when(nil, '') }
+end

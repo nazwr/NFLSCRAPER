@@ -1,66 +1,66 @@
 # STAT SEED INFO
-index = 16
-reciever = ""
-while index < 17
-  Dir.foreach("./public/stat/2016/WEEK" + "#{index}") do |file|
-    next if file == "." or file == ".."
-    game_data = File.read("./public/stat/2016/WEEK" + "#{index}/" + file)
-    gamecode = file.chomp('.json')
-    sorted_game_data = JSON.parse(game_data)
-    sorted_game_data.each do |stat|
-      unless stat.include?("2 pt conversion")
-        stat_array = stat.split(" ")
-        stat_array.delete("Sr.")
-        stat_array.delete("Jr.")
-        stat_array.delete("III")
-
-          if stat_array[1] == "FUMBLE,"
-            stat_array.slice!(1,6)
-          end
-
-          if stat_array.include?("rush") || stat_array.include?("pass")
-            unless Player.find_by(first_name: stat_array[1], last_name: stat_array[2])
-              current_player = Player.create(first_name: stat_array[1], last_name: stat_array[2])
-            end
-              current_player = Player.find_by(first_name: stat_array[1], last_name: stat_array[2])
-
-            if stat_array.include?("pass") && !stat_array.include?("incomplete") && !stat_array.include?("INTERCEPTED")
-              unless Player.find_by(first_name: stat_array[8], last_name: stat_array[9])
-                reciever = Player.create(first_name: stat_array[8], last_name: stat_array[9])
-              end
-                reciever = Player.find_by(first_name: stat_array[8], last_name: stat_array[9])
-            end
-
-            if stat_array.include?("INTERCEPTED")
-              Stat.create(play_type: "pass", yards: "0", direction: "none", complete: false, touchdown: false, intercepted: true, gamecode: gamecode, player: current_player)
-            elsif stat_array.include?("incomplete")
-              Stat.create(play_type: "pass", yards: "0", direction: stat_array[7], complete: false, touchdown: false, gamecode: gamecode, player: current_player)
-            elsif stat_array.include?("pass") && stat_array.include?("loss")
-              Stat.create(play_type: "pass", yards: "-#{stat_array[14]}" , direction: stat_array[6], complete: true, touchdown: false, gamecode: gamecode, player: current_player)
-              Stat.create(play_type:"rec", yards: "-#{stat_array[14]}", direction: stat_array[6], complete: false, touchdown: false, gamecode: gamecode, player: reciever)
-            elsif stat_array[3] == "pass" && stat_array.include?("TOUCHDOWN.")
-              Stat.create(play_type: "pass", yards: stat_array[11] , direction: stat_array[6], complete: true, touchdown: true, gamecode: gamecode, player: current_player)
-              Stat.create(play_type:"rec", yards: stat_array[11], direction: stat_array[6], complete: false, touchdown: true, gamecode: gamecode, player: reciever)
-            elsif stat_array[3] == "pass"
-              Stat.create(play_type: "pass", yards: stat_array[11] , direction: stat_array[6], complete: true, touchdown: false, gamecode: gamecode, player: current_player)
-              Stat.create(play_type:"rec", yards: stat_array[11], direction: stat_array[6], complete: false, touchdown: false, gamecode: gamecode, player: reciever)
-            end
-
-            if stat_array.include?("rush") && stat_array.include?("loss")
-              Stat.create(play_type: "rush", yards: "-#{stat_array[11]}", direction: stat_array[6], complete: false, touchdown: false, gamecode: gamecode, player: current_player)
-            elsif stat_array.include?("rush") && stat_array.include?("TOUCHDOWN.")
-              Stat.create(play_type: "rush", yards: stat_array[8], direction: stat_array[6], complete: false, touchdown: true, gamecode: gamecode, player: current_player)
-            elsif stat_array.include?("rush") && stat_array.include?("no") && stat_array.include?("gain")
-              Stat.create(play_type: "rush", yards: "0", direction: stat_array[6], touchdown: false, complete: false, gamecode: gamecode, player: current_player)
-            elsif stat_array.include?("rush")
-              Stat.create(play_type: "rush", yards: stat_array[8], direction: stat_array[6], touchdown: false, complete: false, gamecode: gamecode, player: current_player)
-            end
-          end
-      end
-    end
-  end
-  index += 1
-end
+# index = 1
+# reciever = ""
+# while index < 17
+#   Dir.foreach("./public/stat/2016/WEEK" + "#{index}") do |file|
+#     next if file == "." or file == ".."
+#     game_data = File.read("./public/stat/2016/WEEK" + "#{index}/" + file)
+#     gamecode = file.chomp('.json')
+#     sorted_game_data = JSON.parse(game_data)
+#     sorted_game_data.each do |stat|
+#       unless stat.include?("2 pt conversion")
+#         stat_array = stat.split(" ")
+#         stat_array.delete("Sr.")
+#         stat_array.delete("Jr.")
+#         stat_array.delete("III")
+#
+#           if stat_array[1] == "FUMBLE,"
+#             stat_array.slice!(1,6)
+#           end
+#
+#           if stat_array.include?("rush") || stat_array.include?("pass")
+#             unless Player.find_by(first_name: stat_array[1], last_name: stat_array[2])
+#               current_player = Player.create(first_name: stat_array[1], last_name: stat_array[2])
+#             end
+#               current_player = Player.find_by(first_name: stat_array[1], last_name: stat_array[2])
+#
+#             if stat_array.include?("pass") && !stat_array.include?("incomplete") && !stat_array.include?("INTERCEPTED")
+#               unless Player.find_by(first_name: stat_array[8], last_name: stat_array[9])
+#                 reciever = Player.create(first_name: stat_array[8], last_name: stat_array[9])
+#               end
+#                 reciever = Player.find_by(first_name: stat_array[8], last_name: stat_array[9])
+#             end
+#
+#             if stat_array.include?("INTERCEPTED")
+#               Stat.create(play_type: "pass", yards: "0", direction: "none", complete: false, touchdown: false, intercepted: true, gamecode: gamecode, player: current_player)
+#             elsif stat_array.include?("incomplete")
+#               Stat.create(play_type: "pass", yards: "0", direction: stat_array[7], complete: false, touchdown: false, gamecode: gamecode, player: current_player)
+#             elsif stat_array.include?("pass") && stat_array.include?("loss")
+#               Stat.create(play_type: "pass", yards: "-#{stat_array[14]}" , direction: stat_array[6], complete: true, touchdown: false, gamecode: gamecode, player: current_player)
+#               Stat.create(play_type:"rec", yards: "-#{stat_array[14]}", direction: stat_array[6], complete: false, touchdown: false, gamecode: gamecode, player: reciever)
+#             elsif stat_array[3] == "pass" && stat_array.include?("TOUCHDOWN.")
+#               Stat.create(play_type: "pass", yards: stat_array[11] , direction: stat_array[6], complete: true, touchdown: true, gamecode: gamecode, player: current_player)
+#               Stat.create(play_type:"rec", yards: stat_array[11], direction: stat_array[6], complete: false, touchdown: true, gamecode: gamecode, player: reciever)
+#             elsif stat_array[3] == "pass"
+#               Stat.create(play_type: "pass", yards: stat_array[11] , direction: stat_array[6], complete: true, touchdown: false, gamecode: gamecode, player: current_player)
+#               Stat.create(play_type:"rec", yards: stat_array[11], direction: stat_array[6], complete: false, touchdown: false, gamecode: gamecode, player: reciever)
+#             end
+#
+#             if stat_array.include?("rush") && stat_array.include?("loss")
+#               Stat.create(play_type: "rush", yards: "-#{stat_array[11]}", direction: stat_array[6], complete: false, touchdown: false, gamecode: gamecode, player: current_player)
+#             elsif stat_array.include?("rush") && stat_array.include?("TOUCHDOWN.")
+#               Stat.create(play_type: "rush", yards: stat_array[8], direction: stat_array[6], complete: false, touchdown: true, gamecode: gamecode, player: current_player)
+#             elsif stat_array.include?("rush") && stat_array.include?("no") && stat_array.include?("gain")
+#               Stat.create(play_type: "rush", yards: "0", direction: stat_array[6], touchdown: false, complete: false, gamecode: gamecode, player: current_player)
+#             elsif stat_array.include?("rush")
+#               Stat.create(play_type: "rush", yards: stat_array[8], direction: stat_array[6], touchdown: false, complete: false, gamecode: gamecode, player: current_player)
+#             end
+#           end
+#       end
+#     end
+#   end
+#   index += 1
+# end
 
 # IMAGE SEED INFO
 # @players = Player.all
@@ -110,34 +110,34 @@ end
 #   f.write(playerinfo.to_json)
 # end
 # PROFILE SEED INFO
-index = 1
-while index < 7
-  player_data = File.read("./public/playerprofile/playerinfo" + "#{index}.json")
-  sorted_player_data = JSON.parse(player_data)
-  sorted_player_data.each do |player|
-    name = player[0].split
-    player_name = Player.find_by(first_name: name[0], last_name: name[1])
-    player_name.height = player[1]["Height"]
-    player_name.weight = player[1]["Weight"]
-    player_name.born = player[1]["Birthday"]
-    player_name.years_pro = player[1]["Years Pro"]
-    player_name.college = player[1]["College"]
-    player_name.current_team = player[1]["Team"]
-    player_name.position = player[1]["Position"]
-    player_name.number = player[1]["Number"]
-    player_name.image = player[1]["Photo"]
-    player_name.save
-  end
-index += 1
-end
+# index = 1
+# while index < 7
+#   player_data = File.read("./public/playerprofile/playerinfo" + "#{index}.json")
+#   sorted_player_data = JSON.parse(player_data)
+#   sorted_player_data.each do |player|
+#     name = player[0].split
+#     player_name = Player.find_by(first_name: name[0], last_name: name[1])
+#     player_name.height = player[1]["Height"]
+#     player_name.weight = player[1]["Weight"]
+#     player_name.born = player[1]["Birthday"]
+#     player_name.years_pro = player[1]["Years Pro"]
+#     player_name.college = player[1]["College"]
+#     player_name.current_team = player[1]["Team"]
+#     player_name.position = player[1]["Position"]
+#     player_name.number = player[1]["Number"]
+#     player_name.image = player[1]["Photo"]
+#     player_name.save
+#   end
+# index += 1
+# end
 
 # GAME SCHEDULE
-index = 1
-while index < 17
-  game_schedule = File.read("./public/schedule/NFL_2016_WEEK" + "#{index}.json")
-  sorted_game_schedule = JSON.parse(game_schedule)
-  sorted_game_schedule.each do |game|
-    Game.create(away: game["away"], home: game["home"], week: index, gamecode: game["gamecode"])
-  end
-index += 1
-end
+# index = 1
+# while index < 17
+#   game_schedule = File.read("./public/schedule/NFL_2016_WEEK" + "#{index}.json")
+#   sorted_game_schedule = JSON.parse(game_schedule)
+#   sorted_game_schedule.each do |game|
+#     Game.create(away: game["away"], home: game["home"], week: index, gamecode: game["gamecode"])
+#   end
+# index += 1
+# end

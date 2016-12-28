@@ -1,7 +1,12 @@
 class Stat < ActiveRecord::Base
   validates :play_type, presence: true
   validates :player, presence: true
-  
+  validates :direction, presence: true
+  validates :complete, presence: true
+  validates :touchdown, presence: true
+  validates :intercepted, presence: true
+  validates :gamecode, presence: true
+
   belongs_to :player
 
   def plain_text
