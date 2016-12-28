@@ -3,8 +3,9 @@ class Stat < ActiveRecord::Base
   validates :player, presence: true
   validates :direction, presence: true
   validates :complete, presence: true
-  validates :touchdown, presence: true
-  validates :intercepted, presence: true
+  validates :touchdown, inclusion: { in: [ true, false ] }
+  validates :complete, inclusion: { in: [ true, false ] }
+  validates :intercepted, inclusion: { in: [ true, false ] }
   validates :gamecode, presence: true
 
   belongs_to :player
