@@ -12,11 +12,15 @@ RSpec.describe Player, type: :model do
   it { should have_valid(:number).when('12') }
 end
 
-describe "Player's Season Passing Total: " do
+describe "Player's Season Total: " do
   let!(:brady) { FactoryGirl.create(:player) }
   let!(:stat1) { FactoryGirl.create(:stat, player: brady) }
   let!(:stat2) { FactoryGirl.create(:stat, player: brady) }
   let!(:stat3) { FactoryGirl.create(:stat, complete: false, yards: "0", intercepted: true, touchdown: false, player: brady) }
+  let!(:stat4) { FactoryGirl.create(:stat, play_type: "rush", complete: false, yards: "10", intercepted: false, touchdown: false, player: brady) }
+  let!(:stat5) { FactoryGirl.create(:stat, play_type: "rush", complete: false, yards: "-4", intercepted: false, touchdown: false, player: brady) }
+  let!(:stat6) { FactoryGirl.create(:stat, play_type: "rush", complete: false, yards: "1", intercepted: false, touchdown: true, player: brady) }
+  let!(:stat7) { FactoryGirl.create(:stat, play_type: "rec", complete: false, yards: "25", intercepted: false, touchdown: false, player: brady) }
 
   it "Brady's total passing tds is equal to 2" do
     expect(brady.total_pass_tds).to eq(2)
@@ -37,13 +41,6 @@ describe "Player's Season Passing Total: " do
   it "Brady's total passing attempts is equal to 3" do
     expect(brady.attempts).to eq(3)
   end
-end
-
-describe "Player's Season Rushing Total: " do
-  let!(:brady) { FactoryGirl.create(:player) }
-  let!(:stat1) { FactoryGirl.create(:stat, play_type: "rush", complete: false, yards: "10", intercepted: false, touchdown: false, player: brady) }
-  let!(:stat2) { FactoryGirl.create(:stat, play_type: "rush", complete: false, yards: "-4", intercepted: false, touchdown: false, player: brady) }
-  let!(:stat3) { FactoryGirl.create(:stat, play_type: "rush", complete: false, yards: "1", intercepted: false, touchdown: true, player: brady) }
 
   it "Brady's total rushing tds is equal to 1" do
     expect(brady.total_rush_tds).to eq(1)
@@ -56,11 +53,6 @@ describe "Player's Season Rushing Total: " do
   it "Brady's total rushing attempts is equal to 3" do
     expect(brady.rushing_attempts).to eq(3)
   end
-end
-
-describe "Player's Season Receiving Total: " do
-  let!(:brady) { FactoryGirl.create(:player) }
-  let!(:stat1) { FactoryGirl.create(:stat, play_type: "rec", complete: false, yards: "25", intercepted: false, touchdown: false, player: brady) }
 
   it "Brady's total receiving tds is equal to 0" do
     expect(brady.total_rec_tds).to eq(0)
@@ -73,17 +65,6 @@ describe "Player's Season Receiving Total: " do
   it "Brady's total receptions is equal to 1" do
     expect(brady.receptions).to eq(1)
   end
-end
-
-describe "Player's Season Total: " do
-  let!(:brady) { FactoryGirl.create(:player) }
-  let!(:stat1) { FactoryGirl.create(:stat, player: brady) }
-  let!(:stat2) { FactoryGirl.create(:stat, player: brady) }
-  let!(:stat3) { FactoryGirl.create(:stat, complete: false, yards: "0", intercepted: true, touchdown: false, player: brady) }
-  let!(:stat4) { FactoryGirl.create(:stat, play_type: "rush", complete: false, yards: "10", intercepted: false, touchdown: false, player: brady) }
-  let!(:stat5) { FactoryGirl.create(:stat, play_type: "rush", complete: false, yards: "-4", intercepted: false, touchdown: false, player: brady) }
-  let!(:stat6) { FactoryGirl.create(:stat, play_type: "rush", complete: false, yards: "1", intercepted: false, touchdown: true, player: brady) }
-  let!(:stat7) { FactoryGirl.create(:stat, play_type: "rec", complete: false, yards: "25", intercepted: false, touchdown: false, player: brady) }
 
   it "Brady's total tds is equal to 3" do
     expect(brady.total_tds).to eq(3)
