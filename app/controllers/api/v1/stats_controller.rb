@@ -2,6 +2,7 @@ class Api::V1::StatsController < ApiController
   def index
     @gametotal = Hash.new
     @gametotal["game_total_yards"] = Stat.new.total_yards(params[:first_name],params[:last_name],params[:gamecode])
+    binding.pry
     @gametotal["game_total_tds"] = Stat.new.total_tds(params[:first_name],params[:last_name],params[:gamecode])
     @gametotal["game_total_pass_yards"] = Stat.new.total_pass_yards(params[:first_name],params[:last_name],params[:gamecode])
     @gametotal["game_total_pass_tds"] = Stat.new.total_pass_tds(params[:first_name],params[:last_name],params[:gamecode])
