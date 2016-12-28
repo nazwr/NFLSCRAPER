@@ -251,7 +251,7 @@ DEPENDENCIES
   cloudinary
   database_cleaner
   dotenv-rails
-  factory_girl_rails
+  factory_girl_rails (~> 4.0)
   foundation-rails
   jquery-rails
   launchy
