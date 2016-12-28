@@ -13,5 +13,3 @@ RSpec.describe Game, type: :model do
   it { should have_valid(:gamecode).when('20160908007', '20161226006') }
   it { should_not have_valid(:gamecode).when(nil, '') }
 end
-
-binding.pry

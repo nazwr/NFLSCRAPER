@@ -11,6 +11,8 @@ RSpec.describe Stat, type: :model do
   it { should_not have_valid(:gamecode).when(nil, '') }
 
   it { should_not have_valid(:complete).when(nil, '') }
+
   it { should_not have_valid(:touchdown).when(nil, '') }
+
   it { should_not have_valid(:intercepted).when(nil, '') }
 end

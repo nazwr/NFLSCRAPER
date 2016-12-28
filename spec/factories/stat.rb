@@ -7,6 +7,6 @@ FactoryGirl.define do
     touchdown true
     intercepted false
     player
-    gamecode "20160908007"
+    gamecode "20161127020"
   end
 end
