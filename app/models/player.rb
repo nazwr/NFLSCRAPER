@@ -1,6 +1,14 @@
 class Player < ActiveRecord::Base
-  validates :first_name, presence: true;
-  validates :last_name, presence: true;
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  # validates :height, presence: true
+  # validates :weight, presence: true
+  # validates :born, presence: true
+  # validates :years_pro, presence: true
+  # validates :college, presence: true
+  # validates :position, presence: true
+  # validates :current_team, presence: true
+  # validates :number, presence: true
 
   has_many :stats
 
