@@ -48,7 +48,7 @@ const PlayerSearch = props => {
         </div>
       </div>
       <div className="row">
-        <div className="small-12 columns">
+        <div className="small-12 columns player-stats">
            <h4>Height: {props.player.height}</h4>
            <h4>Weight: {props.player.weight}</h4>
            <h4>Birthday: {props.player.born}</h4>
