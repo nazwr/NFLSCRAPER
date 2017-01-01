@@ -140,3 +140,76 @@
   border-radius: 50%;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1), 0 2px 5px rgba(0,0,0,0.2);
 }
+
+.passing-stat p2{
+  padding-left: 130px;
+}
+
+.rushing-stat p2{
+  padding-left: 130px;
+}
+
+.receiving-stat p2{
+  padding-left: 130px;
+}
+
+.passing p1{
+  padding-left: 15px;
+}
+
+.passing p2{
+  padding-left: 35px;
+  padding-right: 5px;
+}
+
+.passing p3{
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+.passing p4{
+  padding-left: 9px;
+  padding-right: 9px;
+}
+
+.passing p5{
+  padding-left: 10px;
+}
+
+.rushing p1{
+  padding-left: 15px;
+}
+
+.rushing p2{
+  padding-left: 35px;
+  padding-right: 5px;
+}
+
+.rushing p3{
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+.rushing p4{
+  padding-left: 9px;
+  padding-right: 9px;
+}
+
+.receiving p1{
+  padding-left: 15px;
+}
+
+.receiving p2{
+  padding-left: 35px;
+  padding-right: 5px;
+}
+
+.receiving p3{
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+.receiving p4{
+  padding-left: 9px;
+  padding-right: 9px;
+}

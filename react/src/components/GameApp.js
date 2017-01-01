@@ -10,7 +10,9 @@ class GameApp extends Component {
       allStats: "",
       allPlayers: "",
       home: "",
+      homeTeam: "",
       away: "",
+      awayTeam: "",
     };
 
     this.handleSelectWeek = this.handleSelectWeek.bind(this);
@@ -27,7 +29,9 @@ class GameApp extends Component {
       success: (data) => {
         this.setState({
           home: data.homeStats,
-          away: data.awayStats
+          away: data.awayStats,
+          homeTeam: data.homeStats[0].team,
+          awayTeam: data.awayStats[0].team
         })
       }
     })
@@ -67,6 +71,8 @@ class GameApp extends Component {
     let allPlayers = this.state.allPlayers;
     let home = this.state.home;
     let away = this.state.away;
+    let homeTeam = this.state.homeTeam;
+    let awayTeam = this.state.awayTeam;
 
     return(
       <GameSearch
@@ -78,6 +84,8 @@ class GameApp extends Component {
         allPlayers={allPlayers}
         home={home}
         away={away}
+        homeTeam={homeTeam}
+        awayTeam={awayTeam}
       />
     );
   }
