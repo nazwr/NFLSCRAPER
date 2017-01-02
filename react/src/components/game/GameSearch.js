@@ -162,47 +162,57 @@ const GameSearch = props => {
     </div>
   }
 
+
   return(
-    <div className="row game-body-div">
-      <div className="small-12 large-4 columns game-search-div">
-        <select name="selectWeek" onChange={props.handleSelectWeek}>
-          <option key={1}> Select Week </option>
-          {searchWeek}
-        </select>
-        <select name="selectGames" onChange={props.handleSelectGame}>
-          <option key={1}> Select Game </option>
-          {searchGames}
-        </select>
-        <GameLeader
-          homePassingLeader={props.homePassingLeader}
-          homeRushingLeader={props.homeRushingLeader}
-          homeReceivingLeader={props.homeReceivingLeader}
-          awayPassingLeader={props.awayPassingLeader}
-          awayRushingLeader={props.awayRushingLeader}
-          awayReceivingLeader={props.awayReceivingLeader}
-        />
+    <div className="gamestat">
+      <div className="row game-selection-div">
+          <div className="row">
+            <div className="small-12 medium-6 columns week-select-div">
+              <p>Game Search</p>
+              <label><b>Week</b></label>
+              <select name="selectWeek" onChange={props.handleSelectWeek}>
+                <option key={1}> Select Week </option>
+                {searchWeek}
+              </select>
+              <label><b>Game</b></label>
+              <select name="selectGames" onChange={props.handleSelectGame}>
+                <option key={1}> Select Game </option>
+                {searchGames}
+              </select>
+            </div>
+          </div>
+          <GameLeader
+            homePassingLeader={props.homePassingLeader}
+            homeRushingLeader={props.homeRushingLeader}
+            homeReceivingLeader={props.homeReceivingLeader}
+            awayPassingLeader={props.awayPassingLeader}
+            awayRushingLeader={props.awayRushingLeader}
+            awayReceivingLeader={props.awayReceivingLeader}
+          />
       </div>
-      <div className="small-12 large-4 columns away-team-div">
-        {props.awayTeam}
-        <br></br>
-        <br></br>
-        {awayPassing}
-        <br></br>
-        {awayRushing}
-        <br></br>
-        {awayReceiving}
-        <br></br>
-      </div>
-      <div className="small-12 large-3 columns home-team-div">
-        {props.homeTeam}
-        <br></br>
-        <br></br>
-        {homePassing}
-        <br></br>
-        {homeRushing}
-        <br></br>
-        {homeReceiving}
-        <br></br>
+      <div className="row game-stat-div">
+        <div className="small-12 medium-6 columns away-game-stat-div">
+          {props.awayTeam}
+          <br></br>
+          <br></br>
+          {awayPassing}
+          <br></br>
+          {awayRushing}
+          <br></br>
+          {awayReceiving}
+          <br></br>
+        </div>
+        <div className="small-12 medium-6 columns home-game-stat-div">
+          {props.homeTeam}
+          <br></br>
+          <br></br>
+          {homePassing}
+          <br></br>
+          {homeRushing}
+          <br></br>
+          {homeReceiving}
+          <br></br>
+        </div>
       </div>
     </div>
   );

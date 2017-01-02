@@ -146,9 +146,53 @@
   height: 50px;
   border-radius: 50%;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1), 0 2px 5px rgba(0,0,0,0.2);
+  margin-left: 35px;
+  margin-right: 15px;
 }
 
 .away-team-div{
   margin-left: 50px;
   margin-right: 50px;
+}
+
+.home-passing-leader p{
+  font-size: 12px;
+  margin-bottom: 0px;
+}
+
+.away-passing-leader p{
+  font-size: 12px;
+  margin-bottom: 0px;
+}
+
+.home-rushing-leader p{
+  font-size: 12px;
+  margin-bottom: 0px;
+}
+
+.away-rushing-leader p{
+  font-size: 12px;
+  margin-bottom: 0px;
+}
+
+.home-receiving-leader p{
+  font-size: 12px;
+  margin-bottom: 0px;
+}
+
+.away-receiving-leader p{
+  font-size: 12px;
+  margin-bottom: 0px;
+}
+
+.game-select-div {
+  max-width: 200px;
+  align-content: right;
+  position: absolute;
+  right: 0px;
+}
+
+.week-select-div {
+  max-width: 200px;
+  align-content: left;
 }
