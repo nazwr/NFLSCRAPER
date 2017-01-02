@@ -187,12 +187,8 @@
 
 .game-select-div {
   max-width: 200px;
-  align-content: right;
-  position: absolute;
-  right: 0px;
 }
 
 .week-select-div {
   max-width: 200px;
-  align-content: left;
 }
