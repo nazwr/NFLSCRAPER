@@ -6,12 +6,19 @@ class Api::V1::GamesController < ApiController
     @game = Game.where(gamecode: params["gamecode"])
     @players = @stats.all.pluck(:player_id).uniq
     homestats = []
+    homePassingLeader = ""
+    homeRushingLeader = ""
+    homeReceivingLeader = ""
+    awayPassingLeader = ""
+    awayRushingLeader = ""
+    awayReceivingLeader = ""
     awaystats = []
     @players.each do |player|
       a = Player.find_by(id: player)
       @gametotal = Hash.new
       @gametotal["name"] = a.full_name
       @gametotal["team"] = a.current_team
+      @gametotal["image"] = a.image
       @gametotal["passing_yards"] = Stat.new.total_pass_yards(a.first_name,a.last_name,params[:gamecode])
       @gametotal["passing_tds"] = Stat.new.total_pass_tds(a.first_name,a.last_name,params[:gamecode])
       @gametotal["interceptions"] = Stat.new.total_interceptions(a.first_name,a.last_name,params[:gamecode])
@@ -30,8 +37,42 @@ class Api::V1::GamesController < ApiController
       player_team.pop
       if @game[0].home == player_team.join(" ")
         homestats << @gametotal
+        if homePassingLeader == ""
+          homePassingLeader = @gametotal
+        elsif @gametotal["passing_yards"] > homePassingLeader["passing_yards"]
+          homePassingLeader = @gametotal
+        end
+
+        if homeRushingLeader == ""
+          homeRushingLeader = @gametotal
+        elsif @gametotal["rushing_yards"] > homeRushingLeader["rushing_yards"]
+          homeRushingLeader = @gametotal
+        end
+
+        if homeReceivingLeader == ""
+          homeReceivingLeader = @gametotal
+        elsif @gametotal["receiving_yards"] > homeReceivingLeader["receiving_yards"]
+          homeReceivingLeader = @gametotal
+        end
       else @game[0].away == player_team.join(" ")
         awaystats << @gametotal
+        if awayPassingLeader == ""
+          awayPassingLeader = @gametotal
+        elsif @gametotal["passing_yards"] > awayPassingLeader["passing_yards"]
+          awayPassingLeader = @gametotal
+        end
+
+        if awayRushingLeader == ""
+          awayRushingLeader = @gametotal
+        elsif @gametotal["rushing_yards"] > awayRushingLeader["rushing_yards"]
+          awayRushingLeader = @gametotal
+        end
+
+        if awayReceivingLeader == ""
+          awayReceivingLeader = @gametotal
+        elsif @gametotal["receiving_yards"] > awayReceivingLeader["receiving_yards"]
+          awayReceivingLeader = @gametotal
+        end
       end
     end
 
@@ -40,7 +81,13 @@ class Api::V1::GamesController < ApiController
     allGames: @games,
     homeStats: homestats,
     awayStats: awaystats,
-    game: @game
+    game: @game,
+    homePassingLeader: homePassingLeader,
+    homeRushingLeader: homeRushingLeader,
+    homeReceivingLeader: homeReceivingLeader,
+    awayPassingLeader: awayPassingLeader,
+    awayRushingLeader: awayRushingLeader,
+    awayReceivingLeader: awayReceivingLeader,
     }, status: :ok
   end
 
