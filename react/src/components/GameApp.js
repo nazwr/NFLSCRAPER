@@ -10,7 +10,15 @@ class GameApp extends Component {
       allStats: "",
       allPlayers: "",
       home: "",
+      homeTeam: "",
       away: "",
+      awayTeam: "",
+      homePassingLeader: "",
+      homeRushingLeader: "",
+      homeReceivingLeader: "",
+      awayPassingLeader: "",
+      awayRushingLeader: "",
+      awayReceivingLeader: ""
     };
 
     this.handleSelectWeek = this.handleSelectWeek.bind(this);
@@ -27,7 +35,15 @@ class GameApp extends Component {
       success: (data) => {
         this.setState({
           home: data.homeStats,
-          away: data.awayStats
+          away: data.awayStats,
+          homeTeam: data.homeStats[0].team,
+          awayTeam: data.awayStats[0].team,
+          homePassingLeader: data.homePassingLeader,
+          homeRushingLeader: data.homeRushingLeader,
+          homeReceivingLeader: data.homeReceivingLeader,
+          awayPassingLeader: data.awayPassingLeader,
+          awayRushingLeader: data.awayRushingLeader,
+          awayReceivingLeader: data.awayReceivingLeader
         })
       }
     })
@@ -67,6 +83,14 @@ class GameApp extends Component {
     let allPlayers = this.state.allPlayers;
     let home = this.state.home;
     let away = this.state.away;
+    let homeTeam = this.state.homeTeam;
+    let awayTeam = this.state.awayTeam;
+    let homePassingLeader = this.state.homePassingLeader;
+    let homeRushingLeader = this.state.homeRushingLeader;
+    let homeReceivingLeader = this.state.homeReceivingLeader;
+    let awayPassingLeader = this.state.awayPassingLeader;
+    let awayRushingLeader = this.state.awayRushingLeader;
+    let awayReceivingLeader = this.state.awayReceivingLeader;
 
     return(
       <GameSearch
@@ -78,6 +102,14 @@ class GameApp extends Component {
         allPlayers={allPlayers}
         home={home}
         away={away}
+        homeTeam={homeTeam}
+        awayTeam={awayTeam}
+        homePassingLeader={homePassingLeader}
+        homeRushingLeader={homeRushingLeader}
+        homeReceivingLeader={homeReceivingLeader}
+        awayPassingLeader={awayPassingLeader}
+        awayRushingLeader={awayRushingLeader}
+        awayReceivingLeader={awayReceivingLeader}
       />
     );
   }

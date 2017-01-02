@@ -1,13 +1,15 @@
 import React from 'react';
 
 const ReceivingStat = props => {
+
   return(
-    <div className="row">
-      <label>Receiving: {props.stat.name} </label>
-      <label>Receptions: {props.stat.receptions} </label>
-      <label>Receiving Yards: {props.stat.receiving_yards} </label>
-      <label>Receiving Touchdowns: {props.stat.receiving_tds} </label>
-      <br></br>
+    <div>
+      <div className="receiving">
+        <p1>{props.stat.name}</p1>
+        <p2>{props.stat.receptions}</p2>
+        <p3>{props.stat.receiving_yards}</p3>
+        <p4>{props.stat.receiving_tds}</p4>
+      </div>
     </div>
   )
 };
