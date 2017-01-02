@@ -150,43 +150,11 @@
   height: 50px;
   border-radius: 50%;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1), 0 2px 5px rgba(0,0,0,0.2);
-  margin-left: 35px;
-  margin-right: 15px;
-}
-
-.away-team-div{
-  margin-left: 50px;
-  margin-right: 50px;
-}
-
-.home-passing-leader p{
-  font-size: 12px;
-  margin-bottom: 0px;
-}
-
-.away-passing-leader p{
-  font-size: 12px;
-  margin-bottom: 0px;
-}
-
-.home-rushing-leader p{
-  font-size: 12px;
-  margin-bottom: 0px;
-}
-
-.away-rushing-leader p{
-  font-size: 12px;
-  margin-bottom: 0px;
-}
-
-.home-receiving-leader p{
-  font-size: 12px;
-  margin-bottom: 0px;
-}
-
-.away-receiving-leader p{
-  font-size: 12px;
-  margin-bottom: 0px;
+  max-width: 300px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: center
 }
 
 .game-select-div {
@@ -195,4 +163,80 @@
 
 .week-select-div {
   max-width: 200px;
+}
+
+.away-passing-leader p{
+  margin-bottom: 0px;
+  text-align: center;
+}
+
+.home-passing-leader p{
+  margin-bottom: 0px;
+  text-align: center;
+}
+
+.away-rushing-leader p{
+  margin-bottom: 0px;
+  text-align: center;
+}
+
+.home-rushing-leader p{
+  margin-bottom: 0px;
+  text-align: center;
+}
+
+.away-receiving-leader p{
+  margin-bottom: 0px;
+  text-align: center;
+}
+
+.home-receiving-leader p{
+  margin-bottom: 0px;
+  text-align: center;
+}
+
+.away-passing-leader {
+  border-top: solid grey;
+  border-bottom: solid grey;
+  border-left: solid grey;
+  border-width: 1px;
+  font-size: 12px;
+}
+
+.home-passing-leader {
+  border-top: solid grey;
+  border-bottom: solid grey;
+  border-right: solid grey;
+  border-width: 1px;
+  font-size: 12px;
+}
+
+.away-rushing-leader {
+  border-top: solid grey;
+  border-bottom: solid grey;
+  border-width: 1px;
+  font-size: 12px;
+}
+
+.home-rushing-leader {
+  border-top: solid grey;
+  border-bottom: solid grey;
+  border-right: solid grey;
+  border-width: 1px;
+  font-size: 12px;
+}
+
+.away-receiving-leader {
+  border-top: solid grey;
+  border-bottom: solid grey;
+  border-width: 1px;
+  font-size: 12px;
+}
+
+.home-receiving-leader {
+  border-top: solid grey;
+  border-bottom: solid grey;
+  border-right: solid grey;
+  border-width: 1px;
+  font-size: 12px;
 }
