@@ -145,6 +145,22 @@
   box-shadow: 0 2px 5px rgba(0,0,0,0.1), 0 2px 5px rgba(0,0,0,0.2);
 }
 
+.leader-table th {
+  padding: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1), 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.leader-table td {
+  text-align: center;
+  width: 30vw;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1), 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.leader-div {
+  display: inline;
+  text-align: center;
+}
+
 .leader-image {
   margin: auto;
   height: 50px;
@@ -196,47 +212,25 @@
 }
 
 .away-passing-leader {
-  border-top: solid grey;
-  border-bottom: solid grey;
-  border-left: solid grey;
-  border-width: 1px;
   font-size: 12px;
 }
 
 .home-passing-leader {
-  border-top: solid grey;
-  border-bottom: solid grey;
-  border-right: solid grey;
-  border-width: 1px;
   font-size: 12px;
 }
 
 .away-rushing-leader {
-  border-top: solid grey;
-  border-bottom: solid grey;
-  border-width: 1px;
   font-size: 12px;
 }
 
 .home-rushing-leader {
-  border-top: solid grey;
-  border-bottom: solid grey;
-  border-right: solid grey;
-  border-width: 1px;
   font-size: 12px;
 }
 
 .away-receiving-leader {
-  border-top: solid grey;
-  border-bottom: solid grey;
-  border-width: 1px;
   font-size: 12px;
 }
 
 .home-receiving-leader {
-  border-top: solid grey;
-  border-bottom: solid grey;
-  border-right: solid grey;
-  border-width: 1px;
   font-size: 12px;
 }
