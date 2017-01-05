@@ -145,20 +145,30 @@
   box-shadow: 0 2px 5px rgba(0,0,0,0.1), 0 2px 5px rgba(0,0,0,0.2);
 }
 
+.leader-table {
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
 .leader-table th {
+  border: thin solid grey;
   padding: 5px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1), 0 2px 5px rgba(0,0,0,0.2);
 }
 
 .leader-table td {
   text-align: center;
   width: 30vw;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1), 0 2px 5px rgba(0,0,0,0.2);
+  border: thin solid grey;
+}
+
+.leader-table hr {
+  margin: 5px;
 }
 
 .leader-div {
-  display: inline;
+  display: inline;;
   text-align: center;
+  margin: 10px;
 }
 
 .leader-image {
