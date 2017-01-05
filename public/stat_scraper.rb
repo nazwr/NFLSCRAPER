@@ -4,7 +4,7 @@ require 'pry'
 require 'rubygems'
 require 'json'
 
-game_week = 16
+game_week = 17
 while game_week <= 17
   doc = Nokogiri::HTML(open("http://scores.nbcsports.com/fb/scoreboard.asp?week=#{game_week}"))
   a = doc.css('a')
