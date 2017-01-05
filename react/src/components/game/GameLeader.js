@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 const GameLeader = props => {
   let leadingPassers = "";
@@ -16,6 +17,7 @@ const GameLeader = props => {
               {props.awayPassingLeader.completions}/{props.awayPassingLeader.attempts}, {props.awayPassingLeader.passing_yards} yds, {props.awayPassingLeader.passing_tds} TD, {props.awayPassingLeader.interceptions} INT
             </p>
         </div>
+        <hr/>
         <div className="leader-div">
           <p>{props.homePassingLeader.team}</p>
           <img src= {props.homePassingLeader.image} className="leader-image"/>
@@ -38,6 +40,7 @@ const GameLeader = props => {
             {props.awayRushingLeader.rushing_attempts} CAR, {props.awayRushingLeader.rushing_yards} yds, {props.awayRushingLeader.rushing_tds} TD
           </p>
         </div>
+        <hr/>
         <div className="leader-div">
           <p>{props.homeRushingLeader.team}</p>
           <img src= {props.homeRushingLeader.image} className="leader-image"/>
@@ -60,6 +63,7 @@ const GameLeader = props => {
             {props.awayReceivingLeader.receptions} REC, {props.awayReceivingLeader.receiving_yards} yds, {props.awayReceivingLeader.receiving_tds} TD
           </p>
         </div>
+        <hr/>
         <div className="leader-div">
           <p>{props.homeReceivingLeader.team}</p>
           <img src= {props.homeReceivingLeader.image} className="leader-image"/>
@@ -71,8 +75,13 @@ const GameLeader = props => {
       </div>
   }
 
+  if (leadingPassers !==  "") {
+    let div = $(".game-leader");
+    div.removeClass("hidden")
+  }
+
   return(
-    <div className="game-leader row">
+    <div className="game-leader row hidden">
       <table className="leader-table">
         <th colSpan="3">Game Leaders</th>
         <tr>

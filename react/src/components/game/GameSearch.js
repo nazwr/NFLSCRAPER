@@ -3,6 +3,7 @@ import PassingStat from './PassingStat';
 import RushingStat from './RushingStat';
 import ReceivingStat from './ReceivingStat';
 import GameLeader from './GameLeader';
+import GameStats from './GameStat'
 
 const GameSearch = props => {
 
@@ -162,7 +163,6 @@ const GameSearch = props => {
     </div>
   }
 
-
   return(
     <div className="games">
       <div className="row leaderboardstat">
@@ -189,6 +189,12 @@ const GameSearch = props => {
         awayPassingLeader={props.awayPassingLeader}
         awayRushingLeader={props.awayRushingLeader}
         awayReceivingLeader={props.awayReceivingLeader}
+      />
+      <GameStats
+        awayTeam={props.awayTeam}
+        homeTeam={props.homeTeam}
+        stats={props}
+        //INSERT ALL IND. STATS HERE
       />
       <div className="row gamestat">
         <div className="small-12 medium-4 columns away-game-stat-div">

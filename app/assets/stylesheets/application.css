@@ -145,20 +145,28 @@
   box-shadow: 0 2px 5px rgba(0,0,0,0.1), 0 2px 5px rgba(0,0,0,0.2);
 }
 
+.game-leader {
+  display: block;
+}
+
 .leader-table {
   border-collapse: collapse;
   font-size: 12px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1), 0 2px 5px rgba(0,0,0,0.2);
 }
 
 .leader-table th {
   border: thin solid grey;
   padding: 5px;
+  background: #a53828;
+  color: white;
 }
 
 .leader-table td {
   text-align: center;
   width: 30vw;
   border: thin solid grey;
+  padding: 10px;
 }
 
 .leader-table hr {
@@ -191,56 +199,6 @@
   max-width: 200px;
 }
 
-.away-passing-leader p{
-  margin-bottom: 0px;
-  text-align: center;
-}
-
-.home-passing-leader p{
-  margin-bottom: 0px;
-  text-align: center;
-}
-
-.away-rushing-leader p{
-  margin-bottom: 0px;
-  text-align: center;
-}
-
-.home-rushing-leader p{
-  margin-bottom: 0px;
-  text-align: center;
-}
-
-.away-receiving-leader p{
-  margin-bottom: 0px;
-  text-align: center;
-}
-
-.home-receiving-leader p{
-  margin-bottom: 0px;
-  text-align: center;
-}
-
-.away-passing-leader {
-  font-size: 12px;
-}
-
-.home-passing-leader {
-  font-size: 12px;
-}
-
-.away-rushing-leader {
-  font-size: 12px;
-}
-
-.home-rushing-leader {
-  font-size: 12px;
-}
-
-.away-receiving-leader {
-  font-size: 12px;
-}
-
-.home-receiving-leader {
-  font-size: 12px;
+.hidden {
+  display: none;
 }
