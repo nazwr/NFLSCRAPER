@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import GameSearch from './game/GameSearch';
+import { Link } from 'react-router';
 
 class GameApp extends Component {
   constructor(props) {
@@ -93,24 +94,27 @@ class GameApp extends Component {
     let awayReceivingLeader = this.state.awayReceivingLeader;
 
     return(
-      <GameSearch
-        handleSelectWeek={handleSelectWeek}
-        handleSelectGame={handleSelectGame}
-        weeks={weeks}
-        allGames={allGames}
-        allStats={allStats}
-        allPlayers={allPlayers}
-        home={home}
-        away={away}
-        homeTeam={homeTeam}
-        awayTeam={awayTeam}
-        homePassingLeader={homePassingLeader}
-        homeRushingLeader={homeRushingLeader}
-        homeReceivingLeader={homeReceivingLeader}
-        awayPassingLeader={awayPassingLeader}
-        awayRushingLeader={awayRushingLeader}
-        awayReceivingLeader={awayReceivingLeader}
-      />
+      <div>
+        <p><Link to="/">Player Search</Link></p>
+        <GameSearch
+          handleSelectWeek={handleSelectWeek}
+          handleSelectGame={handleSelectGame}
+          weeks={weeks}
+          allGames={allGames}
+          allStats={allStats}
+          allPlayers={allPlayers}
+          home={home}
+          away={away}
+          homeTeam={homeTeam}
+          awayTeam={awayTeam}
+          homePassingLeader={homePassingLeader}
+          homeRushingLeader={homeRushingLeader}
+          homeReceivingLeader={homeReceivingLeader}
+          awayPassingLeader={awayPassingLeader}
+          awayRushingLeader={awayRushingLeader}
+          awayReceivingLeader={awayReceivingLeader}
+        />
+      </div>
     );
   }
 }

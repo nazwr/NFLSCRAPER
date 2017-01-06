@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router';
 import PlayerSearch from './player/PlayerSearch';
 
 class App extends Component {
@@ -129,6 +130,8 @@ class App extends Component {
     let matchingLast = this.state.matchingSearchLastName;
 
     return(
+      <div>
+      <p><Link to="/games">Game Search</Link></p>
       <PlayerSearch
         currentPlayerName={currentPlayerName}
         playerSearchLastName={playerSearchLastName}
@@ -145,6 +148,7 @@ class App extends Component {
         matchingFirst={matchingFirst}
         matchingLast={matchingLast}
       />
+      </div>
     );
   }
 }
