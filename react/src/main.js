@@ -9,7 +9,6 @@ $(function() {
   ReactDOM.render((
     <Router history={browserHistory}>
       <Route path="/" component={App}/>
-      <Route path="/games" component={GameApp}/>
     </Router>
   ), document.getElementById('app'))
 });
