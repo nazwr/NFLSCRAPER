@@ -17,10 +17,12 @@ const GameLeader = props => {
               {props.awayPassingLeader.completions}/{props.awayPassingLeader.attempts}, {props.awayPassingLeader.passing_yards} yds, {props.awayPassingLeader.passing_tds} TD, {props.awayPassingLeader.interceptions} INT
             </p>
         </div>
-        <hr/>
         <div className="leader-div">
           <p>{props.homePassingLeader.team}</p>
-          <img src= {props.homePassingLeader.image} className="leader-image"/>
+          <img
+            src= {props.homePassingLeader.image}
+            className="leader-image"
+            />
           <p>
              <b>{props.homePassingLeader.name}</b><br/>
              {props.homePassingLeader.completions}/{props.homePassingLeader.attempts}, {props.homePassingLeader.passing_yards} yds, {props.homePassingLeader.passing_tds} TD, {props.homePassingLeader.interceptions} INT
@@ -40,7 +42,6 @@ const GameLeader = props => {
             {props.awayRushingLeader.rushing_attempts} CAR, {props.awayRushingLeader.rushing_yards} yds, {props.awayRushingLeader.rushing_tds} TD
           </p>
         </div>
-        <hr/>
         <div className="leader-div">
           <p>{props.homeRushingLeader.team}</p>
           <img src= {props.homeRushingLeader.image} className="leader-image"/>
@@ -63,7 +64,6 @@ const GameLeader = props => {
             {props.awayReceivingLeader.receptions} REC, {props.awayReceivingLeader.receiving_yards} yds, {props.awayReceivingLeader.receiving_tds} TD
           </p>
         </div>
-        <hr/>
         <div className="leader-div">
           <p>{props.homeReceivingLeader.team}</p>
           <img src= {props.homeReceivingLeader.image} className="leader-image"/>
